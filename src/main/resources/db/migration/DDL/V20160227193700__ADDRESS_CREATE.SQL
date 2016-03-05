@@ -9,7 +9,7 @@ CREATE TABLE `address` (
   INDEX `USER_ID_idx` (`userId` ASC),
   CONSTRAINT `ADDRESS_USER`
     FOREIGN KEY (`userId`)
-    REFERENCES `usong`.`user` (`userId`)
+    REFERENCES `user` (`userId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 COMMENT = '地址表';

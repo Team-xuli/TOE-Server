@@ -1,4 +1,4 @@
-package team.xuli;
+package team.xuli.toe;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan("team.xuli.dao")
-public class ServerApplication {
+public class ToeServerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ServerApplication.class, args);}
+        SpringApplication.run(ToeServerApplication.class, args);}
 }

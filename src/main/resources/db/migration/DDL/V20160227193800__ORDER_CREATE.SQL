@@ -12,17 +12,17 @@ CREATE TABLE `order` (
   INDEX `DEST_ADDRESS_idx` (`destAddressId` ASC),
   CONSTRAINT `ORDER_USER`
     FOREIGN KEY (`carrierId`)
-    REFERENCES `usong`.`user` (`userId`)
+    REFERENCES `user` (`userId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `ORG_ADDRESS`
     FOREIGN KEY (`orgAddressId`)
-    REFERENCES `usong`.`address` (`addressId`)
+    REFERENCES `address` (`addressId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `DEST_ADDRESS`
     FOREIGN KEY (`destAddressId`)
-    REFERENCES `usong`.`address` (`addressId`)
+    REFERENCES `address` (`addressId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 COMMENT = '订单表';

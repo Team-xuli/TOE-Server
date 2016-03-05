@@ -1,4 +1,6 @@
-package team.xuli.dao;
+package team.xuli.toe.dao;
+
+import team.xuli.toe.domain.User;
 
 /**
  * @author: 徐清锋
@@ -6,4 +8,5 @@ package team.xuli.dao;
  * 创建原因：
  */
 public interface IUserDao {
+    User getUserByUsername(String username);
 }

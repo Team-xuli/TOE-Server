@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.xuli.toe.dao.IUserDao">
+    <resultMap id="UserMap" type="team.xuli.toe.domain.User" autoMapping="true">
+        <id column="userId" property="userId"/>
+        <collection property="authorities" ofType="org.springframework.security.core.authority.SimpleGrantedAuthority">
+            <constructor>
+                <arg column="role" javaType="string"/>
+            </constructor>
+        </collection>
+    </resultMap>
+    <!--通过用户登录名获取用User-->
+    <select id="getUserByUsername" resultMap="UserMap">
+        SELECT
+        user.userId,
+        user.username,
+        user.password,
+        user.accountNonExpired,
+        user.accountNonLocked,
+        user.credentialsNonExpired,
+        user.enabled,
+        role.roleName role
+        FROM user
+        LEFT JOIN r_user_role  ON role.userId = r_user_role.userId
+        LEFT JOIN role ON role.userRoleId = r_user_role.roleId
+        WHERE user.username=#{username}
+    </select>
+</mapper>
+
