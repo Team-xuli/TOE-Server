@@ -12,4 +12,4 @@ server:
   port: 7777
 
 flyway:
-  enabled: false
+  enabled: true
