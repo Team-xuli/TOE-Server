@@ -21,8 +21,8 @@
         user.enabled,
         role.roleName role
         FROM user
-        LEFT JOIN r_user_role  ON role.userId = r_user_role.userId
-        LEFT JOIN role ON role.userRoleId = r_user_role.roleId
+        LEFT JOIN r_user_role  ON user.userId = r_user_role.userId
+        LEFT JOIN role ON r_user_role.roleId = role.roleId
         WHERE user.username=#{username}
     </select>
 </mapper>

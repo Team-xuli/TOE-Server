@@ -1,4 +1,4 @@
-package com.kyee.nec.config;
+package team.xuli.toe.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

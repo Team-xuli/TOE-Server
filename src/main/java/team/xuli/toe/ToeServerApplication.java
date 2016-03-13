@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 创建原因：
  */
 @SpringBootApplication
-@MapperScan("team.xuli.dao")
+@MapperScan("team.xuli.toe.dao")
 public class ToeServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(ToeServerApplication.class, args);}

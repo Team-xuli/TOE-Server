@@ -12,13 +12,16 @@ import team.xuli.toe.dao.IUserDao;
  * 创建原因：
  */
 @Service
-public class UserManageService implements IUserManageService {
+public class UserService implements IUserService {
     @Autowired
     private IUserDao userDao;
 
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        System.out.println("security!");
-        return userDao.getUserByUsername(userName);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userDao.getUserByUsername(username);
+    }
+
+    public UserDetails getUserByUsername(String username){
+        return userDao.getUserByUsername(username);
     }
 
 }
