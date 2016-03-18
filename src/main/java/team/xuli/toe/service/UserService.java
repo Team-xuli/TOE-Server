@@ -29,7 +29,7 @@ public class UserService implements IUserService {
 
     public boolean validateUsername(String username){
         User user = userDao.getByUsername(username);
-        return user == null || user.getUserId() == 0;
+        return user == null;
     }
 
     public boolean updateUser(User user){
