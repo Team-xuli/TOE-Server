@@ -1,8 +1,10 @@
 package team.xuli.toe.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 
 /**
@@ -11,23 +13,26 @@ import java.util.ArrayList;
  * 创建原因：
  */
 public class User implements UserDetails {
-    public int userId;
+    private int userId = 0;
 
-    public String username;
+    @NotNull
+    private String username;
 
-    public String password;
+    @NotNull
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String password;
 
-    public int credit;
+    private int credit;
 
-    public int money;
+    private int money;
 
-    private boolean enabled;
+    private boolean enabled = true;
 
-    private boolean accountNonExpired;
+    private boolean accountNonExpired = true;
 
-    private boolean accountNonLocked;
+    private boolean accountNonLocked = true;
 
-    private boolean credentialsNonExpired;
+    private boolean credentialsNonExpired = true;
 
     private ArrayList<SimpleGrantedAuthority> authorities;
 

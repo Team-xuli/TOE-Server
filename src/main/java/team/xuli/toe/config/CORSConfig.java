@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.*;
  * 创建原因：
  */
 @Configuration
-public class CORSConfig {
+public class    CORSConfig {
     @Bean
     WebMvcConfigurer webMvcConfigurer() {
         return new WebMvcConfigurerAdapter() {

@@ -1,7 +1,7 @@
 package team.xuli.toe.service;
 
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import team.xuli.toe.domain.User;
 
 /**
  * @author: 徐清锋
@@ -9,5 +9,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  * 创建原因：
  */
 public interface IUserService extends UserDetailsService {
-    UserDetails getUserByUsername(String username);
+    boolean signUp(User user);
+
+    boolean validateUsername(String username);
+
+    boolean updateUser(User user);
 }

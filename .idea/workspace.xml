@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b042ba63-f348-4a8b-8cc1-7005b5f66356" name="Default" comment="" />
+    <list default="true" id="b042ba63-f348-4a8b-8cc1-7005b5f66356" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/xuli/toe/config/CORSConfig.java" afterPath="$PROJECT_DIR$/src/main/java/team/xuli/toe/config/CORSConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IUserDao.java" afterPath="$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IUserDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IUserDao.xml" afterPath="$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IUserDao.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/xuli/toe/service/IUserService.java" afterPath="$PROJECT_DIR$/src/main/java/team/xuli/toe/service/IUserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/xuli/toe/config/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/team/xuli/toe/config/SecurityConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/xuli/toe/domain/User.java" afterPath="$PROJECT_DIR$/src/main/java/team/xuli/toe/domain/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/xuli/toe/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/team/xuli/toe/service/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/xuli/toe/controller/UserSignController.java" afterPath="$PROJECT_DIR$/src/main/java/team/xuli/toe/controller/UserSignController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="takeoutExpress.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -24,16 +34,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TestController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/controller/TestController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -44,39 +44,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SecurityConfig.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/config/SecurityConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6648936">
-              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="24" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CORSConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/config/CORSConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="UserSignController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/controller/UserSignController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-              <folding>
-                <element signature="e#787#788#0" expanded="true" />
-                <element signature="e#814#815#0" expanded="true" />
-              </folding>
+              <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -85,11 +58,21 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+              <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
               <folding>
-                <element signature="e#690#691#0" expanded="true" />
-                <element signature="e#748#749#0" expanded="true" />
+                <element signature="e#975#976#0" expanded="true" />
+                <element signature="e#1018#1019#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IRoleDao.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IRoleDao.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -98,10 +81,53 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IUserDao.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+              <caret line="48" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
               <folding>
-                <marker date="1457853794391" expanded="true" signature="681:1086" placeholder="SELECT user...user..." />
+                <marker date="1458283222306" expanded="true" signature="677:1082" placeholder="SELECT user...user..." />
+                <marker date="1458283222306" expanded="true" signature="1174:1585" placeholder="INSERT INTO ..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IRoleDao.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IRoleDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5753425">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RelationBtwUserAndRole.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/domain/RelationBtwUserAndRole.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+              <folding>
+                <element signature="e#237#238#0" expanded="true" />
+                <element signature="e#270#271#0" expanded="true" />
+                <element signature="e#298#299#0" expanded="true" />
+                <element signature="e#328#329#0" expanded="true" />
+                <element signature="e#357#358#0" expanded="true" />
+                <element signature="e#398#399#0" expanded="true" />
+                <element signature="e#434#435#0" expanded="true" />
+                <element signature="e#464#465#0" expanded="true" />
+                <element signature="e#493#494#0" expanded="true" />
+                <element signature="e#534#535#0" expanded="true" />
+                <element signature="e#570#571#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IUserDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IUserDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -110,7 +136,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/service/IUserService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -118,21 +144,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapperProxy.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.3.0/mybatis-3.3.0.jar!/org/apache/ibatis/binding/MapperProxy.class">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/domain/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.7">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DaoAuthenticationProvider.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/4.0.3.RELEASE/spring-security-core-4.0.3.RELEASE.jar!/org/springframework/security/authentication/dao/DaoAuthenticationProvider.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="3.2666667">
-              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -143,8 +159,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Tag Library Descriptor" />
         <option value="Interface" />
+        <option value="Tag Library Descriptor" />
         <option value="Class" />
       </list>
     </option>
@@ -160,16 +176,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/db.migration/DDL/orderTable.sql" />
-        <option value="$PROJECT_DIR$/src/main/resources/db.migration/DDL/addressTable.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/util/Tool.java" />
-        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/util/AppConst.java" />
         <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/service/ITestService.java" />
         <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/service/TestService.java" />
         <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/mapper/IUserDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/mapper/UserDao.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IUserDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/team/xuli/util/AppConst.java" />
         <option value="$PROJECT_DIR$/src/main/java/team/xuli/util/Tool.java" />
         <option value="$PROJECT_DIR$/src/main/java/team/xuli/ToeServerApplication.java" />
@@ -198,19 +208,25 @@
         <option value="$PROJECT_DIR$/src/main/resources/db/migration/DDL/V20160227193500__ROLE_CREATE.sql" />
         <option value="$PROJECT_DIR$/src/main/resources/db/migration/DML/V20160304153200__ROLES_INSERT.sql" />
         <option value="$PROJECT_DIR$/target/classes/application.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/domain/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/service/IUserManageService.java" />
         <option value="$PROJECT_DIR$/src/main/java/ToeServerApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/service/UserManageService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/config/CORSConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/ToeServerApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IUserDao.xml" />
         <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/controller/TestController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/service/IUserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/controller/UserSignController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IUserDao.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IUserDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/util/ErrorMsgs.java" />
+        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/service/IUserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/config/SecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/util/Messages.java" />
+        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/config/CORSConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/controller/UserSignController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/domain/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IRoleDao.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/domain/RelationBtwUserAndRole.java" />
+        <option value="$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IRoleDao.java" />
       </list>
     </option>
   </component>
@@ -276,6 +292,9 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -309,10 +328,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -428,6 +443,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="domain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="takeoutExpress" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TOE-Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="toe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="dao" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -494,9 +539,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -825,12 +867,13 @@
       <workItem from="1457763914266" duration="598000" />
       <workItem from="1457767817918" duration="92000" />
       <workItem from="1457767961053" duration="599000" />
-      <workItem from="1457850538076" duration="5227000" />
+      <workItem from="1457850538076" duration="5825000" />
+      <workItem from="1458281878321" duration="8281000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36817000" />
+    <option name="totallyTimeSpent" value="45696000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -851,15 +894,14 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25412542" sideWeight="0.5060698" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.097949885" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09946849" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48675495" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41225165" sideWeight="0.4939302" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32615894" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34437087" sideWeight="0.4939302" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.119205296" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25208807" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289256" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -870,6 +912,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289256" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -902,35 +945,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/jre/lib/rt.jar!/sun/misc/Launcher.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="201" column="0" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/net/URLClassLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/controller/TestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/lang/ClassLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1179,38 +1193,29 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/db/migration/DML/V20160304153200__ROLES_INSERT.sql">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19565217">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/db/migration/DML/V20160305132700__ADMIN_INSERT.sql">
       <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/db/migration/DML/V20160305132700__ADMIN_INSERT.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13043478">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.2.3.RELEASE/spring-beans-4.2.3.RELEASE.jar!/org/springframework/beans/factory/annotation/AutowiredAnnotationBeanPostProcessor.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7633136">
           <caret line="486" column="0" selection-start-line="486" selection-start-column="0" selection-end-line="486" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/domain/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1218,7 +1223,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1226,15 +1230,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IUserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1248,7 +1243,7 @@
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/4.0.3.RELEASE/spring-security-core-4.0.3.RELEASE.jar!/org/springframework/security/authentication/dao/DaoAuthenticationProvider.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.2666667">
+        <state vertical-scroll-proportion="0.0">
           <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding />
         </state>
@@ -1256,28 +1251,44 @@
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.3.0/mybatis-3.3.0.jar!/org/apache/ibatis/binding/MapperProxy.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.7">
+        <state vertical-scroll-proportion="0.0">
           <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/service/IUserService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/util/Messages.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="42" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/config/SecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IUserDao.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/config/CORSConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
           <folding>
-            <marker date="1457853794391" expanded="true" signature="681:1086" placeholder="SELECT user...user..." />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1290,53 +1301,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-          <folding>
-            <element signature="e#690#691#0" expanded="true" />
-            <element signature="e#748#749#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/controller/UserSignController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="e#787#788#0" expanded="true" />
-            <element signature="e#814#815#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/config/CORSConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/config/SecurityConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IUserDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6648936">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="24" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/domain/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/service/IUserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
+          <folding>
+            <element signature="e#975#976#0" expanded="true" />
+            <element signature="e#1018#1019#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IUserDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding>
+            <marker date="1458283222306" expanded="true" signature="677:1082" placeholder="SELECT user...user..." />
+            <marker date="1458283222306" expanded="true" signature="1174:1585" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IRoleDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/domain/RelationBtwUserAndRole.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+          <folding>
+            <element signature="e#237#238#0" expanded="true" />
+            <element signature="e#270#271#0" expanded="true" />
+            <element signature="e#298#299#0" expanded="true" />
+            <element signature="e#328#329#0" expanded="true" />
+            <element signature="e#357#358#0" expanded="true" />
+            <element signature="e#398#399#0" expanded="true" />
+            <element signature="e#434#435#0" expanded="true" />
+            <element signature="e#464#465#0" expanded="true" />
+            <element signature="e#493#494#0" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#570#571#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/xuli/toe/dao/IRoleDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5753425">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

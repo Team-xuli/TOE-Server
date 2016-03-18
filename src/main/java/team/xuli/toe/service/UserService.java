@@ -1,10 +1,10 @@
 package team.xuli.toe.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import team.xuli.toe.dao.IUserDao;
+import team.xuli.toe.domain.User;
 
 /**
  * @author: 徐清锋
@@ -16,12 +16,23 @@ public class UserService implements IUserService {
     @Autowired
     private IUserDao userDao;
 
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userDao.getUserByUsername(username);
+    public User loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println("One login!");
+        return userDao.getByUsername(username);
     }
 
-    public UserDetails getUserByUsername(String username){
-        return userDao.getUserByUsername(username);
+    public boolean signUp(User user){
+        user.setCredit(1);
+        user.setMoney(0);
+        return userDao.insert(user);
     }
 
+    public boolean validateUsername(String username){
+        User user = userDao.getByUsername(username);
+        return user == null || user.getUserId() == 0;
+    }
+
+    public boolean updateUser(User user){
+        return userDao.update(user);
+    }
 }

@@ -8,5 +8,11 @@ import team.xuli.toe.domain.User;
  * 创建原因：
  */
 public interface IUserDao {
-    User getUserByUsername(String username);
+    User getByUsername(String username);
+
+    boolean insert(User user);
+
+    boolean disable(int userId);
+
+    boolean update(User user);
 }

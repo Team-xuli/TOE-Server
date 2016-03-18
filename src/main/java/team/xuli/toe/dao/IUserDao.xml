@@ -10,7 +10,7 @@
         </collection>
     </resultMap>
     <!--通过用户登录名获取用User-->
-    <select id="getUserByUsername" resultMap="UserMap">
+    <select id="getByUsername" resultMap="UserMap">
         SELECT
         user.userId,
         user.username,
@@ -23,7 +23,43 @@
         FROM user
         LEFT JOIN r_user_role  ON user.userId = r_user_role.userId
         LEFT JOIN role ON r_user_role.roleId = role.roleId
-        WHERE user.username=#{username}
+        WHERE user.username=#{username};
     </select>
+
+    <insert id="insert" parameterType="team.xuli.toe.domain.User">
+        INSERT INTO `user`
+        (`username`,
+        `password`,
+        `credit`,
+        `money`,
+        `enabled`,
+        `accountNonExpired`,
+        `accountNonLocked`,
+        `credentialsNonExpired`)
+        VALUES
+        (#{username},
+        #{password},
+        #{credit},
+        #{money},
+        #{enabled},
+        #{accountNonExpired},
+        #{accountNonLocked},
+        #{credentialsNonExpired});
+    </insert>
+
+    <update id="update" parameterType="team.xuli.toe.domain.User">
+        UPDATE `user`
+        SET
+        <if test="username != '' and username != null">`username` = #{username},</if>
+        <if test="password != '' and password != null">`password` = #{password},</if>
+        <if test="credit != -1">`credit` = #{credit},</if>
+        <if test="money != -1">`money` = #{money},</if>
+        `userId` = #{userId},
+        `enabled` = #{enabled},
+        `accountNonExpired` = #{accountNonExpired},
+        `accountNonLocked` = #{accountNonLocked},
+        `credentialsNonExpired` = #{credentialsNonExpired},
+        WHERE `userId` = #{userId};
+    </update>
 </mapper>
 
