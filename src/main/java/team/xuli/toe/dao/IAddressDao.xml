@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.xuli.toe.dao.IAddressDao">
+    <insert id="insert" parameterType="team.xuli.toe.domain.Address">
+        INSERT INTO `address`
+        (`userId`,
+        `type`,
+        `calledName`,
+        `phoneNo`,
+        `addressDesc`,
+        `addressData`)
+        VALUES
+        (#{userId},
+        #{type},
+        #{calledName},
+        #{phoneNo},
+        #{addressDesc},
+        #{addressData});
+    </insert>
+
+    <select id="get" resultType="team.xuli.toe.domain.Address">
+        SELECT
+        `addressId`,
+        `userId`,
+        `type`,
+        `calledName`,
+        `phoneNo`,
+        `addressDesc`,
+        `addressData`
+        FROM `address`
+        WHERE `addressId` = #{addressId}
+    </select>
+
+    <select id="getAddresses" resultType="team.xuli.toe.domain.Address">
+        SELECT
+        `addressId`,
+        `userId`,
+        `type`,
+        `calledName`,
+        `phoneNo`,
+        `addressDesc`,
+        `addressData`
+        FROM `address`
+        WHERE `userId` = #{userId}
+        AND `type` = #{type};
+    </select>
+
+    <update id="update" parameterType="team.xuli.toe.domain.Address">
+        UPDATE `address`
+        SET
+        `addressId` = #{addressId},
+        `userId` = #{userId},
+        `type` = #{type},
+        `calledName` = #{calledName},
+        `phoneNo` = #{phoneNo},
+        `addressDesc` = #{addressDesc},
+        `addressData` = #{addressData}
+        WHERE `addressId` = #{addressId};
+    </update>
+</mapper>
+

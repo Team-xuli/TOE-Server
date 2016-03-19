@@ -1,6 +1,7 @@
 package team.xuli.toe.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
+import team.xuli.toe.domain.ParamSignUp;
 import team.xuli.toe.domain.User;
 
 /**
@@ -9,7 +10,7 @@ import team.xuli.toe.domain.User;
  * 创建原因：
  */
 public interface IUserService extends UserDetailsService {
-    boolean signUp(User user);
+    boolean signUpWithRole(ParamSignUp paramSignUp);
 
     boolean validateUsername(String username);
 

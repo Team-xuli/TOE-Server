@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.xuli.toe.dao.IOrderDaoDao">
+    <insert id="insert" parameterType="team.xuli.toe.domain.Order">
+        INSERT INTO `order`
+        (`carrierId`,
+        `orgAddressId`,
+        `destAddressId`,
+        `description`,
+        `payment`,
+        `status`,
+        `createTime`,
+         `deadLine`,
+         `assignTime`,
+         `endTime`)
+         VALUES
+         (#{carrierId},
+         #{orgAddressId},
+         #{destAddressId},
+         #{description},
+         #{payment},
+         #{status},
+         #{createTime},
+         #{deadLine},
+         #{assignTime},
+         #{endTime});
+    </insert>
+    <update id="update" parameterType="team.xuli.toe.domain.Order">
+        UPDATE `order`
+        SET
+        <if test="carrierId > 0">`carrierId` = #{carrierId},</if>
+        <if test="orgAddressId > 0">`orgAddressId` = #{orgAddressId},</if>
+        <if test="destAddressId > 0">`destAddressId` = #{destAddressId},</if>
+        <if test="description != null">`description` = #{description},</if>
+        <if test="payment > 0">`payment` = #{payment},</if>
+        <if test="status >= 0">`status` = #{status},</if>
+        <if test="createTime != null">`createTime` = #{createTime},</if>
+        <if test="deadLine != null">`deadLine` = #{deadLine},</if>
+        <if test="assignTime != null">`assignTime` = #{assignTime},</if>
+        <if test="endTime != null">`endTime` = #{endTime},</if>
+        `orderId` = #{orderId}
+        WHERE `orderId` = #{orderId};
+    </update>
+</mapper>
+

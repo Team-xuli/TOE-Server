@@ -36,7 +36,6 @@ public class User implements UserDetails {
 
     private ArrayList<SimpleGrantedAuthority> authorities;
 
-
     public int getUserId() {
         return userId;
     }

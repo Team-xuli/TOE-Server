@@ -7,5 +7,5 @@ package team.xuli.toe.util;
  */
 public class Messages {
     public static String USERNAME_ALREADY_EXISTS = "用户名已存在！";
-    public static String MODIFY_WRONG_USER = "更新错误的用户！";
+    public static String DANGEROUS_REQUEST = "危险性请求！";
 }

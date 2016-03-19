@@ -3,8 +3,13 @@ package team.xuli.toe.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import team.xuli.toe.dao.IRoleDao;
 import team.xuli.toe.dao.IUserDao;
+import team.xuli.toe.domain.ParamSignUp;
+import team.xuli.toe.domain.RelationBtwUserAndRole;
+import team.xuli.toe.domain.Role;
 import team.xuli.toe.domain.User;
+import team.xuli.toe.util.AppConst;
 
 /**
  * @author: 徐清锋
@@ -15,16 +20,25 @@ import team.xuli.toe.domain.User;
 public class UserService implements IUserService {
     @Autowired
     private IUserDao userDao;
+    @Autowired
+    private IRoleDao roleDao;
 
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println("One login!");
+        //System.out.println("One login!");
         return userDao.getByUsername(username);
     }
 
-    public boolean signUp(User user){
-        user.setCredit(1);
-        user.setMoney(0);
-        return userDao.insert(user);
+    public boolean signUpWithRole(ParamSignUp paramSignUp){
+        User user = newUser(paramSignUp.getUsername(),paramSignUp.getPassword());
+        Role role = roleDao.getRoleByRoleName(paramSignUp.getRoleName());
+
+        if(role != null &&  userDao.insert(user)) {
+            RelationBtwUserAndRole relationBtwUserAndRole =
+                    newRelationBtwUserAndRole(user.getUserId(), role.getRoleId());
+            return roleDao.insertRelationShip(relationBtwUserAndRole);
+        }else{
+            return false;
+        }
     }
 
     public boolean validateUsername(String username){
@@ -35,4 +49,21 @@ public class UserService implements IUserService {
     public boolean updateUser(User user){
         return userDao.update(user);
     }
+
+    private User newUser(String username, String password) {
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setCredit(AppConst.INIT_CREDIT);
+        user.setMoney(AppConst.INIT_MONEY);
+        return user;
+    }
+
+    private RelationBtwUserAndRole newRelationBtwUserAndRole(int userId, int roleId) {
+        RelationBtwUserAndRole relationBtwUserAndRole = new RelationBtwUserAndRole();
+        relationBtwUserAndRole.setUserId(userId);
+        relationBtwUserAndRole.setRoleId(roleId);
+        return relationBtwUserAndRole;
+    }
+
 }

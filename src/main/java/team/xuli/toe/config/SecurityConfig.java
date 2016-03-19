@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.encoding.PlaintextPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 /**
  * @author: 徐清锋
  * 创建时间：2016/3/5
- * 创建原因：
+ * 创建原因：安全管理配置
  */
 @Configuration
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
@@ -34,8 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http.
                 authorizeRequests()
                 .antMatchers("/hello").permitAll()
+                .antMatchers("/user/passport").permitAll()
                 .antMatchers("/user").permitAll()
-                .antMatchers(HttpMethod.POST,"/user").permitAll()
                 .anyRequest().authenticated();
     }
 }
