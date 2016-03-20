@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="team.xuli.toe.dao.IOrderDaoDao">
+<mapper namespace="team.xuli.toe.dao.IOrderDao">
     <insert id="insert" parameterType="team.xuli.toe.domain.Order">
         INSERT INTO `order`
         (`carrierId`,
@@ -41,5 +41,57 @@
         `orderId` = #{orderId}
         WHERE `orderId` = #{orderId};
     </update>
+
+    <select id="get" resultType="team.xuli.toe.domain.Order">
+        SELECT
+        `order`.`orderId`,
+        `order`.`ownerId`,
+        `order`.`carrierId`,
+        `order`.`orgAddressId`,
+        `order`.`destAddressId`,
+        `order`.`description`,
+        `order`.`payment`,
+        `order`.`status`,
+        `order`.`createTime`,
+        `order`.`deadLine`,
+        `order`.`assignTime`,
+        `order`.`endTime`
+        FROM `order`
+        WHERE orderId = #{orderId};
+    </select>
+
+    <select id="getQualifiedOrdersCount" resultType="team.xuli.toe.domain.Order">
+        SELECT
+        `order`.`orderId`,
+        `order`.`ownerId`,
+        `order`.`carrierId`,
+        `order`.`orgAddressId`,
+        `order`.`destAddressId`,
+        `order`.`description`,
+        `order`.`payment`,
+        `order`.`status`,
+        `order`.`createTime`,
+        `order`.`deadLine`,
+        `order`.`assignTime`,
+        `order`.`endTime`
+        FROM `order`
+        WHERE
+        <if test="ownerId > 0">ownerId = #{ownerId} AND</if>
+        <if test="carrierId > 0">carrierId = #{carrierId} AND</if>
+        <if test="status >= 0">status = #{status} AND </if>
+        orderId > 0
+        ORDER BY status ASC AND orderId DESC
+        LIMIT #{startPos},#{count};
+    </select>
+
+    <select id="getOrderCount" resultType="int">
+        SELECT  COUNT(*)
+        FROM `order`
+        WHERE
+        <if test="ownerId > 0">ownerId = #{ownerId} AND</if>
+        <if test="carrierId > 0">carrierId = #{carrierId} AND</if>
+        <if test="status >= 0">status = #{status} AND </if>
+        orderId > 0;
+    </select>
 </mapper>
 

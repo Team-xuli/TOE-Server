@@ -28,7 +28,7 @@ public class UserInfoController {
     @RequestMapping(value = "/passport", method = RequestMethod.GET)
     public String signIn() {
         User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return user.getAuthorities().get(0).toString();
+        return user.getRole();
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)

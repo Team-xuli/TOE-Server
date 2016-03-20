@@ -9,6 +9,7 @@ import java.util.Date;
  */
 public class Order {
     private int orderId;
+    private int ownerId;
     private int carrierId;
     private int orgAddressId;
     private int destAddressId;
@@ -26,6 +27,14 @@ public class Order {
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;
+    }
+
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
     }
 
     public int getCarrierId() {

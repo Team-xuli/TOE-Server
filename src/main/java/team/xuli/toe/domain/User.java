@@ -1,10 +1,9 @@
 package team.xuli.toe.domain;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import team.xuli.toe.util.AppConst;
 
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 
 /**
@@ -14,25 +13,23 @@ import java.util.ArrayList;
  */
 public class User implements UserDetails {
     private int userId = 0;
-
-    @NotNull
     private String username;
-
-    @NotNull
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String password;
-
     private int credit;
-
     private int money;
-
     private boolean enabled = true;
-
     private boolean accountNonExpired = true;
-
     private boolean accountNonLocked = true;
-
     private boolean credentialsNonExpired = true;
+
+    //获取用户角色，暂时只有一个角色，返回authorities的第一个元素
+    public String getRole() {
+        if(authorities.size() > 0){
+            return authorities.get(0).toString();
+        } else {
+            return AppConst.ROLE_NONE_SENSE;
+        }
+    }
 
     private ArrayList<SimpleGrantedAuthority> authorities;
 
