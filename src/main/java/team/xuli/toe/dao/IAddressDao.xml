@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="team.xuli.toe.dao.IAddressDao">
-    <insert id="insert" parameterType="team.xuli.toe.domain.Address">
+    <insert id="insert" parameterType="team.xuli.toe.domain.Address" useGeneratedKeys="true" keyProperty="addressId">
         INSERT INTO `address`
         (`userId`,
         `type`,

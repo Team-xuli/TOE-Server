@@ -26,7 +26,7 @@
         WHERE user.username=#{username};
     </select>
 
-    <insert id="insert" parameterType="team.xuli.toe.domain.User">
+    <insert id="insert" parameterType="team.xuli.toe.domain.User" useGeneratedKeys="true" keyProperty="userId">
         INSERT INTO `user`
         (`username`,
         `password`,

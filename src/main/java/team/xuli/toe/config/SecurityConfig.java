@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.encoding.PlaintextPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -33,10 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http.httpBasic();
         http.
                 authorizeRequests()
-                .antMatchers("/hello").permitAll()
-                .antMatchers("/user/passport").permitAll()
-                .antMatchers("/user").permitAll()
-                .antMatchers(HttpMethod.POST, "/order").hasAnyRole("ROLE_OWNER")
-                .anyRequest().authenticated();
+                .antMatchers("/user/**").permitAll()
+                .antMatchers("/order/**").permitAll();
     }
 }

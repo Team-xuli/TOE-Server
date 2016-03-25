@@ -11,12 +11,17 @@ public class AppConst {
     public static String ROLE_OWNER = "ROLE_OWNER";
     public static String ROLE_CARRIER = "ROLE_CARRIER";
 
+    //Order status
+    public static  int ORDER_SRARUS_NEW = 0;
+    public static  int ORDER_SRARUS_ASSIGNED = 1;
+    public static  int ORDER_SRARUS_COMPLETE = 2;
+
     //NONE_SENSE CONST
     public static String ROLE_NONE_SENSE = "NO_ROLE";
     public static int STATUS_NONE_SENSE = -1;
     public static int MONEY_NONE_SENSE = -1;
     public static int CREDIT_NONE_SENSE = -1;
-    public static int ID_NONE_SENSE = -1;
+    public static int ID_NONE_SENSE = 0;
     public static Object OBJECT_NONE_SENSE = null;
 
     //INIT CONST

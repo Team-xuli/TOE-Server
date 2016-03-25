@@ -1,5 +1,6 @@
 package team.xuli.toe.dao;
 
+import org.apache.ibatis.annotations.Param;
 import team.xuli.toe.domain.RelationBtwUserAndRole;
 import team.xuli.toe.domain.Role;
 
@@ -11,5 +12,5 @@ import team.xuli.toe.domain.Role;
 public interface IRoleDao {
     boolean insertRelationShip(RelationBtwUserAndRole relationBtwUserAndRole);
 
-    Role getRoleByRoleName(String roleName);
+    Role getRoleByRoleName(@Param("roleName")String roleName);
 }

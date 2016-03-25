@@ -1,5 +1,7 @@
 package team.xuli.toe.domain;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.validation.constraints.NotNull;
 
 /**
@@ -10,13 +12,16 @@ import javax.validation.constraints.NotNull;
 public class ParamSignUp {
 
     @NotNull
+    @NotBlank
     private String username;
 
     @NotNull
+    @NotBlank
     private String password;
 
     @NotNull
-    private String roleName;
+    @NotBlank
+    private String role;
 
     public String getUsername() {
         return username;
@@ -34,11 +39,11 @@ public class ParamSignUp {
         this.password = password;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setRole(String role) {
+        this.role = role;
     }
 }

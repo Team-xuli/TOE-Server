@@ -19,8 +19,14 @@ public class AddressService implements IAddressService {
     @Autowired
     private IAddressDao addressDao;
 
-    public boolean addOrgAddress(Address address) {
+    public boolean addOrgAddress(User user,Address address) {
+        address.setUserId(user.getUserId());
         address.setType(AppConst.ADDRESS_TYPE_ORG);
+        return addressDao.insert(address);
+    }
+    public boolean addDestAddress(User user,Address address){
+        address.setUserId(AppConst.ID_NONE_SENSE);
+        address.setType(AppConst.ADDRESS_TYPE_DEST);
         return addressDao.insert(address);
     }
 
@@ -34,7 +40,13 @@ public class AddressService implements IAddressService {
 
     public boolean validateAddressModifier(User user, Address address) {
         Address oldAddress = addressDao.get(address.getAddressId());
-        return oldAddress.getUserId() != user.getUserId() &&
+        return oldAddress.getUserId() == user.getUserId() &&
                 oldAddress.getType() == AppConst.ADDRESS_TYPE_ORG;
+    }
+    public boolean validateNewAddress(Address address){
+        return address.getCalledName() != null && address.getCalledName() != "" &&
+                address.getPhoneNo() != null && address.getPhoneNo() != "" &&
+                address.getAddressDesc() != null && address.getAddressDesc() != "" &&
+                address.getAddressData() != null && address.getAddressData() != "";
     }
 }

@@ -1,5 +1,7 @@
 package team.xuli.toe.domain;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * @author: 徐清锋
  * 创建时间：2016/3/19
@@ -9,9 +11,13 @@ public class Address {
     private int addressId;
     private int userId;
     private int type;
-    private String callName;
+    @NotNull
+    private String calledName;
+    @NotNull
     private String phoneNo;
+    @NotNull
     private String addressDesc;
+    @NotNull
     private String addressData;
 
     public int getAddressId() {
@@ -38,12 +44,12 @@ public class Address {
         this.type = type;
     }
 
-    public String getCallName() {
-        return callName;
+    public String getCalledName() {
+        return calledName;
     }
 
-    public void setCallName(String callName) {
-        this.callName = callName;
+    public void setCalledName(String calledName) {
+        this.calledName = calledName;
     }
 
     public String getPhoneNo() {

@@ -18,21 +18,20 @@ import java.util.List;
  * 创建原因：
  */
 @RestController
-@RequestMapping(value = "/user")
 public class UserInfoController {
     @Autowired
     IUserService userService;
     @Autowired
     IAddressService addressService;
 
-    @RequestMapping(value = "/passport", method = RequestMethod.GET)
-    public String signIn() {
-        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return user.getRole();
-    }
+//    @RequestMapping(value = "/user/signout", method = RequestMethod.GET)
+//    public boolean signOut() {
+//        SecurityContextHolder.clearContext();
+//        return true;
+//    }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    public boolean signUp(@RequestBody ParamSignUp paramSignUp,@RequestParam String roleName) throws RuntimeException{
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public boolean signUp(@RequestBody ParamSignUp paramSignUp) throws RuntimeException{
         if(userService.validateUsername(paramSignUp.getUsername())){
             return userService.signUpWithRole(paramSignUp);
         }else{
@@ -40,13 +39,13 @@ public class UserInfoController {
         }
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
     public User getUserInfo() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return (User)userService.loadUserByUsername(user.getUsername());
     }
 
-    @RequestMapping(value = "", method = RequestMethod.PUT)
+    @RequestMapping(value = "/user", method = RequestMethod.PUT)
     public boolean modifyUser(@RequestBody User user) throws RuntimeException{
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(user.getUserId() == currentUser.getUserId()){
@@ -57,27 +56,25 @@ public class UserInfoController {
 
     }
 
-    @RequestMapping(value = "/address", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/address", method = RequestMethod.POST)
     public boolean addAddress(@RequestBody Address address)throws RuntimeException{
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(address.getUserId() == currentUser.getUserId()){
-            return addressService.addOrgAddress(address);
-        }else{
-            throw new RuntimeException(Messages.DANGEROUS_REQUEST);
+        if(!addressService.validateNewAddress(address)){
+            throw new RuntimeException(Messages.INFO_REQUIRED);
         }
+        return addressService.addOrgAddress(currentUser,address);
     }
 
-    @RequestMapping(value = "/address", method = RequestMethod.PUT)
+    @RequestMapping(value = "/user/address", method = RequestMethod.PUT)
     public boolean updateAddress(@RequestBody Address address)throws RuntimeException{
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(addressService.validateAddressModifier(currentUser,address)){
-            return addressService.updateOrgAddress(address);
-        }else{
+        if(!addressService.validateAddressModifier(currentUser,address)){
             throw new RuntimeException(Messages.DANGEROUS_REQUEST);
         }
+        return addressService.updateOrgAddress(address);
     }
 
-    @RequestMapping(value = "/addresses", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/addresses", method = RequestMethod.GET)
     public List<Address> getAddresses()throws RuntimeException{
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return addressService.getOrgAddresses(currentUser.getUserId());

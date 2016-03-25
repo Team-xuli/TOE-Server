@@ -1,6 +1,6 @@
 package team.xuli.toe.service;
 
-import team.xuli.toe.domain.Order;
+import team.xuli.toe.domain.ParamNewOrder;
 import team.xuli.toe.domain.ParamOrderPage;
 import team.xuli.toe.domain.User;
 
@@ -11,5 +11,5 @@ import team.xuli.toe.domain.User;
  */
 public interface IOrderService {
     ParamOrderPage getPagingOrders(User user, ParamOrderPage param);
-    boolean addOrder(User user,Order order);
+    boolean addOrder(User user,ParamNewOrder paramNewOrder);
 }

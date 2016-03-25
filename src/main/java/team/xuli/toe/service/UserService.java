@@ -3,6 +3,7 @@ package team.xuli.toe.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import team.xuli.toe.dao.IRoleDao;
 import team.xuli.toe.dao.IUserDao;
 import team.xuli.toe.domain.ParamSignUp;
@@ -28,9 +29,10 @@ public class UserService implements IUserService {
         return userDao.getByUsername(username);
     }
 
+    @Transactional
     public boolean signUpWithRole(ParamSignUp paramSignUp){
         User user = newUser(paramSignUp.getUsername(),paramSignUp.getPassword());
-        Role role = roleDao.getRoleByRoleName(paramSignUp.getRoleName());
+        Role role = roleDao.getRoleByRoleName(paramSignUp.getRole());
 
         if(role != null &&  userDao.insert(user)) {
             RelationBtwUserAndRole relationBtwUserAndRole =
