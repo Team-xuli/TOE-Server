@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import team.xuli.toe.domain.Order;
 import team.xuli.toe.domain.ParamNewOrder;
 import team.xuli.toe.domain.ParamOrderPage;
 import team.xuli.toe.domain.User;
 import team.xuli.toe.service.IAddressService;
 import team.xuli.toe.service.IOrderService;
-import team.xuli.toe.util.Messages;
 
 /**
  * @author: 徐清锋
@@ -28,14 +28,43 @@ public class OrderController {
     @RequestMapping(value = "/order", method = RequestMethod.POST)
     public boolean addOrder(@RequestBody ParamNewOrder paramNewOrder){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(paramNewOrder.isNewDestAddress() && !addressService.validateNewAddress(paramNewOrder.getDestAddress())) {
-            throw new RuntimeException(Messages.DANGEROUS_REQUEST);
+        if(paramNewOrder.isNewDestAddress()){
+            return addressService.validateNewAddress(paramNewOrder.getDestAddress()) &&
+                    orderService.addOrder(currentUser,paramNewOrder);
+        } else {
+            return orderService.addOrder(currentUser,paramNewOrder);
         }
-        return orderService.addOrder(currentUser,paramNewOrder);
     }
+
+    @RequestMapping(value = "/order", method = RequestMethod.DELETE)
+    public boolean deleteOrder(@RequestBody Order order) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return orderService.isValidToDelete(currentUser, order) &&
+                orderService.deleteOrder(order);
+    }
+
+    @RequestMapping(value = "/order/assignment", method = RequestMethod.POST)
+    public boolean assignOrder(@RequestBody Order order) throws RuntimeException {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return orderService.isValidToAssign(order) &&
+                orderService.assignOrder(currentUser, order);
+    }
+
+    @RequestMapping(value = "/order/achievement", method = RequestMethod.POST)
+    public boolean closeOrder(@RequestBody Order order) throws RuntimeException {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return orderService.isValidToClose(currentUser, order) &&
+                orderService.closeOrder(order);
+    }
+
+    @RequestMapping(value = "/order/nearby", method = RequestMethod.POST)
+    public ParamOrderPage getOrdersNearby(@RequestBody ParamOrderPage param){
+        return orderService.getNewOrdersNearby(param);
+    }
+
     @RequestMapping(value = "/order/history", method = RequestMethod.POST)
     public ParamOrderPage getHistoryOrders(@RequestBody ParamOrderPage param){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return orderService.getPagingOrders(currentUser,param);
+        return orderService.getHistoryOrders(currentUser, param);
     }
 }

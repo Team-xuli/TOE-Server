@@ -16,10 +16,10 @@ public class Order {
     private String description;
     private int payment;
     private int status;
-    private Date createTime;
-    private Date deadLine;
-    private Date assignTime;
-    private Date endTime;
+    private Date createTime = null;
+    private Date deadLine = null;
+    private Date assignTime = null;
+    private Date endTime = null;
 
     public int getOrderId() {
         return orderId;

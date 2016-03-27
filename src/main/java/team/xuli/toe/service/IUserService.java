@@ -14,5 +14,7 @@ public interface IUserService extends UserDetailsService {
 
     boolean validateUsername(String username);
 
+    boolean validateUserModifier(User currentUser,User userInfo);
+
     boolean updateUser(User user);
 }

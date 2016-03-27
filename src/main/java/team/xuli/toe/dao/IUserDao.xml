@@ -10,7 +10,7 @@
         </collection>
     </resultMap>
     <!--通过用户登录名获取用User-->
-    <select id="getByUsername" resultMap="UserMap">
+        <select id="getByUsername" resultMap="UserMap">
         SELECT
         user.userId,
         user.username,
@@ -24,6 +24,22 @@
         LEFT JOIN r_user_role  ON user.userId = r_user_role.userId
         LEFT JOIN role ON r_user_role.roleId = role.roleId
         WHERE user.username=#{username};
+    </select>
+
+    <select id="getById" resultMap="UserMap">
+        SELECT
+        user.userId,
+        user.username,
+        user.password,
+        user.accountNonExpired,
+        user.accountNonLocked,
+        user.credentialsNonExpired,
+        user.enabled,
+        role.roleName role
+        FROM user
+        LEFT JOIN r_user_role  ON user.userId = r_user_role.userId
+        LEFT JOIN role ON r_user_role.roleId = role.roleId
+        WHERE user.userId=#{userId};
     </select>
 
     <insert id="insert" parameterType="team.xuli.toe.domain.User" useGeneratedKeys="true" keyProperty="userId">

@@ -3,12 +3,13 @@ spring:
     url: jdbc:mysql://localhost:3306/toe?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
     username: root
     password: Xqf123123
+
 security:
   basic:
     enabled: false
 
 server:
-  port: 7777
+  port: 8888
 
 flyway:
   enabled: true

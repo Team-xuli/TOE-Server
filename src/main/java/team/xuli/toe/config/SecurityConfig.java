@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.encoding.PlaintextPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -32,7 +33,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http.httpBasic();
         http.
                 authorizeRequests()
-                .antMatchers("/user/**").permitAll()
-                .antMatchers("/order/**").permitAll();
+                //TestController
+                //不登录也可以访问hello world
+                .antMatchers("/hello").permitAll()
+
+                //SignController
+                //不登录也可以注册
+                .antMatchers("/signup").permitAll()
+                //任何角色都可以登录
+                .antMatchers("/signin").hasAnyAuthority()
+
+                //UserController
+                //任何角色都可以修改自己的信息
+                .antMatchers(HttpMethod.PUT, "/user/**").hasAnyAuthority()
+
+                //OrderController
+                //只有owner可以新建订单
+                .antMatchers(HttpMethod.POST, "/order").hasRole("OWNER")
+                //owner和deliverer都可以看自己的订单历史
+                .antMatchers("/order/history").hasAnyRole("OWNER", "DELIVERER")
+                //只有deliverer可以查看附近订单
+                .antMatchers("/order/nearby").hasRole("DELIVERER")
+                .antMatchers("/order/assignment").hasRole("DELIVERER")
+                .antMatchers("/order/achievement").hasRole("DELIVERER")
+                .anyRequest().authenticated();
     }
 }

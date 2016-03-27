@@ -6,6 +6,7 @@ import team.xuli.toe.dao.IAddressDao;
 import team.xuli.toe.domain.Address;
 import team.xuli.toe.domain.User;
 import team.xuli.toe.util.AppConst;
+import team.xuli.toe.util.Messages;
 
 import java.util.List;
 
@@ -40,13 +41,21 @@ public class AddressService implements IAddressService {
 
     public boolean validateAddressModifier(User user, Address address) {
         Address oldAddress = addressDao.get(address.getAddressId());
-        return oldAddress.getUserId() == user.getUserId() &&
-                oldAddress.getType() == AppConst.ADDRESS_TYPE_ORG;
+        if(oldAddress.getUserId() == user.getUserId() &&
+                oldAddress.getType() == AppConst.ADDRESS_TYPE_ORG){
+            return true;
+        } else {
+            throw new RuntimeException(Messages.DANGEROUS_REQUEST);
+        }
     }
     public boolean validateNewAddress(Address address){
-        return address.getCalledName() != null && address.getCalledName() != "" &&
-                address.getPhoneNo() != null && address.getPhoneNo() != "" &&
-                address.getAddressDesc() != null && address.getAddressDesc() != "" &&
-                address.getAddressData() != null && address.getAddressData() != "";
+        if(address.getCalledName() != null && address.getCalledName() != "" &&
+            address.getPhoneNo() != null && address.getPhoneNo() != "" &&
+            address.getAddressDesc() != null && address.getAddressDesc() != ""){
+            return true;
+        } else {
+            throw new RuntimeException(Messages.INFO_REQUIRED);
+        }
+
     }
 }

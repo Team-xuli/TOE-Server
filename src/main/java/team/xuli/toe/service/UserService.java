@@ -11,6 +11,7 @@ import team.xuli.toe.domain.RelationBtwUserAndRole;
 import team.xuli.toe.domain.Role;
 import team.xuli.toe.domain.User;
 import team.xuli.toe.util.AppConst;
+import team.xuli.toe.util.Messages;
 
 /**
  * @author: 徐清锋
@@ -45,7 +46,10 @@ public class UserService implements IUserService {
 
     public boolean validateUsername(String username){
         User user = userDao.getByUsername(username);
-        return user == null;
+        if(user != null){
+            throw new RuntimeException(Messages.USERNAME_ALREADY_EXISTS);
+        }
+        return true;
     }
 
     public boolean updateUser(User user){
@@ -68,4 +72,10 @@ public class UserService implements IUserService {
         return relationBtwUserAndRole;
     }
 
+    public boolean validateUserModifier(User currentUser,User userInfo){
+        if(userInfo.getUserId() != currentUser.getUserId()){
+            throw new RuntimeException(Messages.DANGEROUS_REQUEST);
+        }
+        return true;
+    }
 }

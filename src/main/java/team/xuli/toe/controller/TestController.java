@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
-    public String helloFun(){
+    public String helloFunc(){
         return "hello world!";
     }
 }

@@ -9,6 +9,7 @@ import team.xuli.toe.domain.User;
  */
 public interface IUserDao {
     User getByUsername(String username);
+    User getById(int userId);
 
     boolean insert(User user);
 
