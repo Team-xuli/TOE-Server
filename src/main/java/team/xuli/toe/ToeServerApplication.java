@@ -3,6 +3,7 @@ package team.xuli.toe;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
  * @author: 徐清锋
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan("team.xuli.toe.dao")
+@CrossOrigin
 public class ToeServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(ToeServerApplication.class, args);}

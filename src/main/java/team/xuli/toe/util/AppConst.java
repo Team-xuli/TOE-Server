@@ -6,6 +6,9 @@ package team.xuli.toe.util;
  * 创建原因：
  */
 public class AppConst {
+    //Admin account
+    public static String ADMIN_ACCOUNT = "admin";
+    public static int ADMIN_ID = 1;
     //ROLE CONST
     public static String ROLE_SYS_ADMIN = "ROLE_SYS_ADMIN";
     public static String ROLE_OWNER = "ROLE_OWNER";

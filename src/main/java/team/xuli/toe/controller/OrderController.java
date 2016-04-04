@@ -10,7 +10,6 @@ import team.xuli.toe.domain.Order;
 import team.xuli.toe.domain.ParamNewOrder;
 import team.xuli.toe.domain.ParamOrderPage;
 import team.xuli.toe.domain.User;
-import team.xuli.toe.service.IAddressService;
 import team.xuli.toe.service.IOrderService;
 
 /**
@@ -22,39 +21,29 @@ import team.xuli.toe.service.IOrderService;
 public class OrderController {
     @Autowired
     private IOrderService orderService;
-    @Autowired
-    private IAddressService addressService;
 
     @RequestMapping(value = "/order", method = RequestMethod.POST)
     public boolean addOrder(@RequestBody ParamNewOrder paramNewOrder){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(paramNewOrder.isNewDestAddress()){
-            return addressService.validateNewAddress(paramNewOrder.getDestAddress()) &&
-                    orderService.addOrder(currentUser,paramNewOrder);
-        } else {
-            return orderService.addOrder(currentUser,paramNewOrder);
-        }
+        return orderService.addOrder(currentUser,paramNewOrder);
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.DELETE)
     public boolean deleteOrder(@RequestBody Order order) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return orderService.isValidToDelete(currentUser, order) &&
-                orderService.deleteOrder(order);
+        return orderService.deleteOrder(currentUser, order);
     }
 
     @RequestMapping(value = "/order/assignment", method = RequestMethod.POST)
     public boolean assignOrder(@RequestBody Order order) throws RuntimeException {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return orderService.isValidToAssign(order) &&
-                orderService.assignOrder(currentUser, order);
+        return orderService.assignOrder(currentUser, order);
     }
 
     @RequestMapping(value = "/order/achievement", method = RequestMethod.POST)
     public boolean closeOrder(@RequestBody Order order) throws RuntimeException {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return orderService.isValidToClose(currentUser, order) &&
-                orderService.closeOrder(order);
+        return orderService.closeOrder(currentUser, order);
     }
 
     @RequestMapping(value = "/order/nearby", method = RequestMethod.POST)

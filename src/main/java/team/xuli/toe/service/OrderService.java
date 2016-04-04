@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import team.xuli.toe.dao.IOrderDao;
-import team.xuli.toe.dao.IUserDao;
 import team.xuli.toe.domain.Order;
 import team.xuli.toe.domain.ParamNewOrder;
 import team.xuli.toe.domain.ParamOrderPage;
@@ -24,12 +23,15 @@ public class OrderService implements IOrderService {
     @Autowired
     private IOrderDao orderDao;
     @Autowired
-    private IUserDao userDao;
-    @Autowired
     private IAddressService addressService;
+    @Autowired
+    private ISecurityService securityService;
 
     @Transactional
     public boolean addOrder(User user,ParamNewOrder paramNewOrder){
+        if(paramNewOrder.isNewDestAddress()){
+            addressService.validateNewAddress(paramNewOrder.getDestAddress());
+        }
         //init new order
         Order order = new Order();
         //set default
@@ -40,6 +42,10 @@ public class OrderService implements IOrderService {
         order.setPayment(paramNewOrder.getPayment());
         order.setDescription(paramNewOrder.getDescription());
         order.setOrgAddressId(paramNewOrder.getOrgAddressId());
+
+        //转账给Admin
+        securityService.remitToAdmin(user.getUserId(), order.getPayment());
+
         //new destAddress
         if(paramNewOrder.isNewDestAddress()){
             if(!addressService.addDestAddress(user,paramNewOrder.getDestAddress()))
@@ -54,9 +60,9 @@ public class OrderService implements IOrderService {
     public ParamOrderPage getHistoryOrders(User user,ParamOrderPage param){
         int ownerId = AppConst.ID_NONE_SENSE;
         int carrierId = AppConst.ID_NONE_SENSE;
-        if (user.getRole() == AppConst.ROLE_OWNER) {
+        if (user.getRole().equals(AppConst.ROLE_OWNER)) {
             ownerId = user.getUserId();
-        }else if (user.getRole() == AppConst.ROLE_CARRIER) {
+        }else if (user.getRole().equals(AppConst.ROLE_CARRIER)) {
             carrierId = user.getUserId();
         }
         param.setOrdersCount(orderDao.getQualifiedOrdersCount(ownerId,
@@ -86,6 +92,8 @@ public class OrderService implements IOrderService {
     }
 
     public boolean assignOrder(User user,Order order){
+        this.isValidToAssign(order);
+
         Order tmpOrder = new Order();
         tmpOrder.setOrderId(order.getOrderId());
         tmpOrder.setCarrierId(user.getUserId());
@@ -94,30 +102,24 @@ public class OrderService implements IOrderService {
     }
 
     @Transactional
-    public boolean closeOrder(Order order){
+    public boolean closeOrder(User currentUser, Order order) {
         //update order
         Order tmpOrder = new Order();
+        this.isValidToClose(currentUser, tmpOrder);
         tmpOrder.setOrderId(order.getOrderId());
         tmpOrder.setEndTime(new Date());
         tmpOrder.setStatus(AppConst.ORDER_STATUS_COMPLETED);
         orderDao.update(order);
 
         //update account money and credit
-        Order currentOrder = orderDao.get(order.getOrderId());
-        User deliverer = userDao.getById(currentOrder.getCarrierId());
-        User owner = userDao.getById(currentOrder.getOwnerId());
-
-        deliverer.setMoney(deliverer.getMoney() + currentOrder.getPayment());
-        deliverer.setCredit(deliverer.getCredit() + AppConst.CREDIT_INCREMENT_FOR_DELIVERER);
-        owner.setMoney(owner.getMoney() - currentOrder.getPayment());
-        owner.setCredit(owner.getCredit() + AppConst.CREDIT_INCREMENT_FOR_OWNER);
-
-        userDao.update(deliverer);
-        userDao.update(owner);
+        securityService.remitFromAdmin(order.getCarrierId(),order.getPayment());
+        securityService.creditIncrease(order.getCarrierId(), AppConst.CREDIT_INCREMENT_FOR_DELIVERER);
+        securityService.creditIncrease(order.getOwnerId(), AppConst.CREDIT_INCREMENT_FOR_OWNER);
         return true;
     }
 
-    public boolean deleteOrder(Order order) throws RuntimeException{
+    public boolean deleteOrder(User currentUser, Order order) throws RuntimeException{
+        this.isValidToDelete(currentUser, order);
         Order tmpOrder = new Order();
         tmpOrder.setOrderId(order.getOrderId());
         tmpOrder.setStatus(AppConst.ORDER_STATUS_DELETED);

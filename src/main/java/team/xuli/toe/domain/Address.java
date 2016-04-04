@@ -17,7 +17,6 @@ public class Address {
     private String phoneNo;
     @NotNull
     private String addressDesc;
-    @NotNull
     private String addressData = "";
 
     public int getAddressId() {

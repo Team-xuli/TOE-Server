@@ -13,7 +13,7 @@ import java.util.List;
 public interface IAddressService {
     boolean addOrgAddress(User user,Address address);
     boolean addDestAddress(User user,Address address);
-    boolean updateOrgAddress(Address address);
+    boolean updateOrgAddress(User currentUser, Address address);
     List<Address> getOrgAddresses(int userId);
     boolean validateAddressModifier(User user,Address address);
     boolean validateNewAddress(Address address);

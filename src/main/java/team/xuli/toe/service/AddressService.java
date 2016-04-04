@@ -21,6 +21,7 @@ public class AddressService implements IAddressService {
     private IAddressDao addressDao;
 
     public boolean addOrgAddress(User user,Address address) {
+        this.validateNewAddress(address);
         address.setUserId(user.getUserId());
         address.setType(AppConst.ADDRESS_TYPE_ORG);
         return addressDao.insert(address);
@@ -35,7 +36,8 @@ public class AddressService implements IAddressService {
         return addressDao.getAddresses(userId, AppConst.ADDRESS_TYPE_ORG);
     }
 
-    public boolean updateOrgAddress(Address address) {
+    public boolean updateOrgAddress(User currentUser, Address address) {
+        this.validateAddressModifier(currentUser, address);
         return addressDao.update(address);
     }
 

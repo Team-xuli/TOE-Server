@@ -12,9 +12,11 @@ import team.xuli.toe.domain.User;
 public interface IUserService extends UserDetailsService {
     boolean signUpWithRole(ParamSignUp paramSignUp);
 
-    boolean validateUsername(String username);
+    boolean identifyUsername(String username);
 
     boolean validateUserModifier(User currentUser,User userInfo);
 
-    boolean updateUser(User user);
+    boolean updateUser(User currentUser, User user);
+
+    User getUserByUsername(String username);
 }

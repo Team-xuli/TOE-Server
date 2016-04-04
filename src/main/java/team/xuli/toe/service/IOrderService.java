@@ -15,8 +15,8 @@ public interface IOrderService {
     ParamOrderPage getNewOrdersNearby(ParamOrderPage param);
     boolean addOrder(User user,ParamNewOrder paramNewOrder);
     boolean assignOrder(User user,Order order);
-    boolean closeOrder(Order order);
-    boolean deleteOrder(Order order);
+    boolean closeOrder(User currentUser, Order order);
+    boolean deleteOrder(User currentUser, Order order);
     boolean validateOrderModifier(User user, Order order);
     boolean isValidToAssign(Order order);
     boolean isValidToClose(User user,Order order);

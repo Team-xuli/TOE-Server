@@ -26,12 +26,18 @@ public class UserService implements IUserService {
     private IRoleDao roleDao;
 
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
-        //System.out.println("One login!");
+        System.out.println(username + " login!");
+        return userDao.getByUsername(username);
+    }
+
+    public User getUserByUsername(String username){
         return userDao.getByUsername(username);
     }
 
     @Transactional
     public boolean signUpWithRole(ParamSignUp paramSignUp){
+        this.identifyUsername(paramSignUp.getUsername());
+
         User user = newUser(paramSignUp.getUsername(),paramSignUp.getPassword());
         Role role = roleDao.getRoleByRoleName(paramSignUp.getRole());
 
@@ -44,7 +50,7 @@ public class UserService implements IUserService {
         }
     }
 
-    public boolean validateUsername(String username){
+    public boolean identifyUsername(String username){
         User user = userDao.getByUsername(username);
         if(user != null){
             throw new RuntimeException(Messages.USERNAME_ALREADY_EXISTS);
@@ -52,7 +58,8 @@ public class UserService implements IUserService {
         return true;
     }
 
-    public boolean updateUser(User user){
+    public boolean updateUser(User currentUser, User user){
+        this.validateUserModifier(currentUser, user);
         return userDao.update(user);
     }
 

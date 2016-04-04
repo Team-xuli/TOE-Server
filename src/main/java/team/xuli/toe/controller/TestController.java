@@ -15,4 +15,13 @@ public class TestController {
     public String helloFunc(){
         return "hello world!";
     }
+
+    @RequestMapping(value = "/shello",method = RequestMethod.GET)
+    public String securityHelloFunc(){
+        return "security hello world!";
+    }
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index() throws RuntimeException {
+        return "hello index!";
+    }
 }
