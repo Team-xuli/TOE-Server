@@ -6,6 +6,7 @@ package team.xuli.toe.util;
  * 创建原因：
  */
 public class Messages {
+    public static String NO_USER_LOGIN = "请先登录！";
     public static String INFO_REQUIRED = "缺少必要信息！";
     public static String USERNAME_ALREADY_EXISTS = "用户名已存在！";
     public static String DANGEROUS_REQUEST = "危险性请求！";

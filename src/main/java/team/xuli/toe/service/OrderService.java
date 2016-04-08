@@ -28,14 +28,15 @@ public class OrderService implements IOrderService {
     private ISecurityService securityService;
 
     @Transactional
-    public boolean addOrder(User user,ParamNewOrder paramNewOrder){
+    public boolean addOrder(ParamNewOrder paramNewOrder){
+        User currentUser = securityService.currentUser();
         if(paramNewOrder.isNewDestAddress()){
             addressService.validateNewAddress(paramNewOrder.getDestAddress());
         }
         //init new order
         Order order = new Order();
         //set default
-        order.setOwnerId(user.getUserId());
+        order.setOwnerId(currentUser.getUserId());
         order.setStatus(AppConst.ORDER_STATUS_NEW);
         order.setCreateTime(new Date());
         order.setDeadLine(paramNewOrder.getDeadLine());
@@ -44,11 +45,11 @@ public class OrderService implements IOrderService {
         order.setOrgAddressId(paramNewOrder.getOrgAddressId());
 
         //转账给Admin
-        securityService.remitToAdmin(user.getUserId(), order.getPayment());
+        securityService.remitToAdmin(currentUser.getUserId(), order.getPayment());
 
         //new destAddress
         if(paramNewOrder.isNewDestAddress()){
-            if(!addressService.addDestAddress(user,paramNewOrder.getDestAddress()))
+            if(!addressService.addDestAddress(paramNewOrder.getDestAddress()))
                 return false;
             order.setDestAddressId(paramNewOrder.getDestAddress().getAddressId());
         } else {
@@ -57,13 +58,14 @@ public class OrderService implements IOrderService {
         return orderDao.insert(order);
     }
 
-    public ParamOrderPage getHistoryOrders(User user,ParamOrderPage param){
+    public ParamOrderPage getHistoryOrders(ParamOrderPage param){
+        User currentUser = securityService.currentUser();
         int ownerId = AppConst.ID_NONE_SENSE;
         int carrierId = AppConst.ID_NONE_SENSE;
-        if (user.getRole().equals(AppConst.ROLE_OWNER)) {
-            ownerId = user.getUserId();
-        }else if (user.getRole().equals(AppConst.ROLE_CARRIER)) {
-            carrierId = user.getUserId();
+        if (currentUser.getRole().equals(AppConst.ROLE_OWNER)) {
+            ownerId = currentUser.getUserId();
+        }else if (currentUser.getRole().equals(AppConst.ROLE_CARRIER)) {
+            carrierId = currentUser.getUserId();
         }
         param.setOrdersCount(orderDao.getQualifiedOrdersCount(ownerId,
                                                               carrierId,
@@ -91,18 +93,20 @@ public class OrderService implements IOrderService {
         return param;
     }
 
-    public boolean assignOrder(User user,Order order){
+    public boolean assignOrder(Order order){
+        User currentUser = securityService.currentUser();
         this.isValidToAssign(order);
 
         Order tmpOrder = new Order();
         tmpOrder.setOrderId(order.getOrderId());
-        tmpOrder.setCarrierId(user.getUserId());
+        tmpOrder.setCarrierId(currentUser.getUserId());
         tmpOrder.setStatus(AppConst.ORDER_STATUS_ASSIGNED);
         return orderDao.update(order);
     }
 
     @Transactional
-    public boolean closeOrder(User currentUser, Order order) {
+    public boolean closeOrder(Order order) {
+        User currentUser = securityService.currentUser();
         //update order
         Order tmpOrder = new Order();
         this.isValidToClose(currentUser, tmpOrder);
@@ -118,7 +122,8 @@ public class OrderService implements IOrderService {
         return true;
     }
 
-    public boolean deleteOrder(User currentUser, Order order) throws RuntimeException{
+    public boolean deleteOrder(Order order){
+        User currentUser = securityService.currentUser();
         this.isValidToDelete(currentUser, order);
         Order tmpOrder = new Order();
         tmpOrder.setOrderId(order.getOrderId());

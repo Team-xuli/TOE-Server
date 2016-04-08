@@ -24,16 +24,13 @@ public class UserService implements IUserService {
     private IUserDao userDao;
     @Autowired
     private IRoleDao roleDao;
+    @Autowired
+    private  ISecurityService securityService;
 
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println(username + " login!");
         return userDao.getByUsername(username);
     }
-
-    public User getUserByUsername(String username){
-        return userDao.getByUsername(username);
-    }
-
     @Transactional
     public boolean signUpWithRole(ParamSignUp paramSignUp){
         this.identifyUsername(paramSignUp.getUsername());
@@ -58,7 +55,8 @@ public class UserService implements IUserService {
         return true;
     }
 
-    public boolean updateUser(User currentUser, User user){
+    public boolean updateUser(User user){
+        User currentUser = securityService.currentUser();
         this.validateUserModifier(currentUser, user);
         return userDao.update(user);
     }

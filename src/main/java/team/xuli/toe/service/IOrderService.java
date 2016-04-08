@@ -11,12 +11,12 @@ import team.xuli.toe.domain.User;
  * 创建原因：
  */
 public interface IOrderService {
-    ParamOrderPage getHistoryOrders(User user, ParamOrderPage param);
+    ParamOrderPage getHistoryOrders(ParamOrderPage param);
     ParamOrderPage getNewOrdersNearby(ParamOrderPage param);
-    boolean addOrder(User user,ParamNewOrder paramNewOrder);
-    boolean assignOrder(User user,Order order);
-    boolean closeOrder(User currentUser, Order order);
-    boolean deleteOrder(User currentUser, Order order);
+    boolean addOrder(ParamNewOrder paramNewOrder);
+    boolean assignOrder(Order order);
+    boolean closeOrder(Order order);
+    boolean deleteOrder(Order order);
     boolean validateOrderModifier(User user, Order order);
     boolean isValidToAssign(Order order);
     boolean isValidToClose(User user,Order order);

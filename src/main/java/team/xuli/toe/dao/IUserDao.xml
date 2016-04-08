@@ -74,7 +74,7 @@
         `enabled` = #{enabled},
         `accountNonExpired` = #{accountNonExpired},
         `accountNonLocked` = #{accountNonLocked},
-        `credentialsNonExpired` = #{credentialsNonExpired},
+        `credentialsNonExpired` = #{credentialsNonExpired}
         WHERE `userId` = #{userId};
     </update>
 </mapper>

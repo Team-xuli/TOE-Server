@@ -11,10 +11,10 @@ import java.util.List;
  * 创建原因：
  */
 public interface IAddressService {
-    boolean addOrgAddress(User user,Address address);
-    boolean addDestAddress(User user,Address address);
-    boolean updateOrgAddress(User currentUser, Address address);
-    List<Address> getOrgAddresses(int userId);
+    boolean addOrgAddress(Address address);
+    boolean addDestAddress(Address address);
+    boolean updateOrgAddress(Address address);
+    List<Address> getOrgAddresses();
     boolean validateAddressModifier(User user,Address address);
     boolean validateNewAddress(Address address);
 }

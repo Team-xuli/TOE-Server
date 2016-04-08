@@ -1,8 +1,10 @@
 package team.xuli.toe.controller;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import team.xuli.toe.domain.User;
 
 /**
  * @author: 徐清锋
@@ -17,9 +19,15 @@ public class TestController {
     }
 
     @RequestMapping(value = "/shello",method = RequestMethod.GET)
-    public String securityHelloFunc(){
+     public String securityHelloFunc(){
         return "security hello world!";
     }
+    @RequestMapping(value = "/post",method = RequestMethod.POST)
+    public String postFunc(@RequestBody User user){
+        return user.getUsername() + " hello world!";
+    }
+
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() throws RuntimeException {
         return "hello index!";

@@ -47,6 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 //登录才可以访问hello world
                 .antMatchers("/shello").hasAnyRole("OWNER", "DELIVERER", "ADMIN")
 
+                .antMatchers("/post").permitAll()
+
                 //SignControllers
                 //不登录也可以注册
                 .antMatchers("/signup").permitAll()
@@ -56,6 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
                 //UserController
                 //任何角色都可以修改自己的信息
+                .antMatchers("/user").permitAll()
                 .antMatchers("/user/address").hasAnyRole("OWNER", "DELIVERER")
                 .antMatchers("/user/info").hasAnyRole("OWNER", "DELIVERER")
 
@@ -70,5 +73,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/order/assignment").hasRole("DELIVERER")
                 .antMatchers("/order/achievement").hasRole("DELIVERER")
                 .anyRequest().authenticated();
+
     }
 }

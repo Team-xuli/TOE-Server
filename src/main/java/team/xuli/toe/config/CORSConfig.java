@@ -12,14 +12,13 @@ import org.springframework.web.servlet.config.annotation.*;
 @Configuration
 public class CORSConfig {
     @Bean
-    WebMvcConfigurer webMvcConfigurer() {
+    public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedMethods("PUT","DELETE","GET","POST");
+                        .allowedMethods("PUT", "DELETE", "GET", "POST");
             }
         };
     }
-
 }

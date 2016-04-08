@@ -21,9 +21,9 @@ public class ParamNewOrder {
     private String description;
 
     @Min(1)
-    private int payment;
+    private int payment = 0;
 
-    private Date deadLine;
+    private Date deadLine = new Date();
 
     //是否新建目的地址
     private boolean newDestAddress;

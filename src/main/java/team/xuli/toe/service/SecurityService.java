@@ -1,6 +1,7 @@
 package team.xuli.toe.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import team.xuli.toe.dao.IUserDao;
@@ -48,5 +49,15 @@ public class SecurityService implements ISecurityService {
         user.setCredit(user.getCredit() + value);
         userDao.update(user);
         return true;
+    }
+    public User currentUser(){
+        User currentUser;
+        try {
+            currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        }catch(Exception e) {
+            throw new RuntimeException(Messages.NO_USER_LOGIN);
+        }
+        return currentUser;
     }
 }

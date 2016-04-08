@@ -48,13 +48,13 @@
     <update id="update" parameterType="team.xuli.toe.domain.Address">
         UPDATE `address`
         SET
-        `addressId` = #{addressId},
-        `userId` = #{userId},
-        `type` = #{type},
-        `calledName` = #{calledName},
-        `phoneNo` = #{phoneNo},
-        `addressDesc` = #{addressDesc},
-        `addressData` = #{addressData}
+        <if test="userId > 0">`userId` = #{userId},</if>
+        <if test="type >= 0">`type` = #{type},</if>
+        <if test="calledName != '' and calledName != null ">`calledName` = #{calledName},</if>
+        <if test="phoneNo != '' and phoneNo != null ">`phoneNo` = #{phoneNo},</if>
+        <if test="addressDesc != '' and addressDesc != null ">`addressDesc` = #{addressDesc},</if>
+        <if test="addressData != '' and addressData != null ">`addressData` = #{addressData},</if>
+        `addressId` = #{addressId}
         WHERE `addressId` = #{addressId};
     </update>
 </mapper>

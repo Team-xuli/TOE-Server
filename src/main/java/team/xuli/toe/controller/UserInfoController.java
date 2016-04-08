@@ -10,6 +10,7 @@ import team.xuli.toe.domain.Address;
 import team.xuli.toe.domain.ParamSignUp;
 import team.xuli.toe.domain.User;
 import team.xuli.toe.service.IAddressService;
+import team.xuli.toe.service.ISecurityService;
 import team.xuli.toe.service.IUserService;
 
 import java.util.List;
@@ -25,6 +26,8 @@ public class UserInfoController {
     private IUserService userService;
     @Autowired
     private IAddressService addressService;
+    @Autowired
+    private ISecurityService securityService;
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public boolean signUp(@RequestBody ParamSignUp paramSignUp) throws RuntimeException {
@@ -33,32 +36,27 @@ public class UserInfoController {
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public User getUserInfo() {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return (User)userService.getUserByUsername(user.getUsername());
+        return securityService.currentUser();
     }
 
     @RequestMapping(value = "/user/info", method = RequestMethod.PUT)
     public boolean modifyUser(@RequestBody User user) throws RuntimeException {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return  userService.updateUser(currentUser, user);
+        return  userService.updateUser(user);
     }
 
     @RequestMapping(value = "/user/address", method = RequestMethod.POST)
     public boolean addAddress(@RequestBody Address address)throws RuntimeException {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return addressService.addOrgAddress(currentUser, address);
+        return addressService.addOrgAddress(address);
     }
 
     @RequestMapping(value = "/user/address", method = RequestMethod.PUT)
     public boolean updateAddress(@RequestBody Address address)throws RuntimeException {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return addressService.updateOrgAddress(currentUser, address);
+        return addressService.updateOrgAddress(address);
     }
 
     @RequestMapping(value = "/user/addresses", method = RequestMethod.GET)
     public List<Address> getAddresses()throws RuntimeException{
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return addressService.getOrgAddresses(currentUser.getUserId());
+        return addressService.getOrgAddresses();
     }
 
 }
