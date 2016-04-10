@@ -18,6 +18,7 @@ public class Address {
     @NotNull
     private String addressDesc;
     private String addressData = "";
+    private int status;
 
     public int getAddressId() {
         return addressId;
@@ -73,5 +74,13 @@ public class Address {
 
     public void setAddressData(String addressData) {
         this.addressData = addressData;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

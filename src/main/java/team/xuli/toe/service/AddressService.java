@@ -22,17 +22,27 @@ public class AddressService implements IAddressService {
     @Autowired
     private ISecurityService securityService;
 
+    public boolean deleteAddress(int addressId){
+        User currentUser = securityService.currentUser();
+        Address tmpAddress = addressDao.get(addressId);
+        this.validateAddressModifier(currentUser, tmpAddress);
+        tmpAddress.setStatus(AppConst.ADDRESS_STATUS_DISABLED);
+        return addressDao.update(tmpAddress);
+    }
+
     public boolean addOrgAddress(Address address) {
         User currentUser = securityService.currentUser();
         this.validateNewAddress(address);
         address.setUserId(currentUser.getUserId());
         address.setType(AppConst.ADDRESS_TYPE_ORG);
+        address.setStatus(AppConst.ADDRESS_STATUS_ENABLED);
         return addressDao.insert(address);
     }
     public boolean addDestAddress(Address address){
         User currentUser = securityService.currentUser();
         address.setUserId(currentUser.getUserId());
         address.setType(AppConst.ADDRESS_TYPE_DEST);
+        address.setStatus(AppConst.ADDRESS_STATUS_ENABLED);
         return addressDao.insert(address);
     }
 
@@ -41,9 +51,19 @@ public class AddressService implements IAddressService {
         return addressDao.getAddresses(currentUser.getUserId(), AppConst.ADDRESS_TYPE_ORG);
     }
 
+    public List<Address> getDestAddresses() {
+        User currentUser = securityService.currentUser();
+        return addressDao.getAddresses(currentUser.getUserId(), AppConst.ADDRESS_TYPE_DEST);
+    }
+
     public boolean updateOrgAddress(Address address) {
         User currentUser = securityService.currentUser();
-        this.validateAddressModifier(currentUser, address);
+        Address tmpAddress = addressDao.get(address.getAddressId());
+        this.validateAddressModifier(currentUser, tmpAddress);
+        tmpAddress.setCalledName(address.getCalledName());
+        tmpAddress.setPhoneNo(address.getPhoneNo());
+        tmpAddress.setAddressDesc(address.getAddressDesc());
+        tmpAddress.setAddressData(address.getAddressData());
         return addressDao.update(address);
     }
 

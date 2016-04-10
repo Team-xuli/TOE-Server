@@ -11,8 +11,13 @@ public class Order {
     private int orderId;
     private int ownerId;
     private int carrierId;
+
     private int orgAddressId;
+    private Address orgAddress;
+
     private int destAddressId;
+    private Address destAddress;
+
     private String description;
     private int payment;
     private int status;
@@ -20,6 +25,22 @@ public class Order {
     private Date deadLine = null;
     private Date assignTime = null;
     private Date endTime = null;
+
+    public Address getOrgAddress() {
+        return orgAddress;
+    }
+
+    public void setOrgAddress(Address orgAddress) {
+        this.orgAddress = orgAddress;
+    }
+
+    public Address getDestAddress() {
+        return destAddress;
+    }
+
+    public void setDestAddress(Address destAddress) {
+        this.destAddress = destAddress;
+    }
 
     public int getOrderId() {
         return orderId;

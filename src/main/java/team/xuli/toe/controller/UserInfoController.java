@@ -1,11 +1,7 @@
 package team.xuli.toe.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import team.xuli.toe.domain.Address;
 import team.xuli.toe.domain.ParamSignUp;
 import team.xuli.toe.domain.User;
@@ -54,9 +50,19 @@ public class UserInfoController {
         return addressService.updateOrgAddress(address);
     }
 
-    @RequestMapping(value = "/user/addresses", method = RequestMethod.GET)
-    public List<Address> getAddresses()throws RuntimeException{
+    @RequestMapping(value = "/user/address/{addressId}", method = RequestMethod.DELETE)
+    public boolean updateAddress(@PathVariable int addressId)throws RuntimeException {
+        return addressService.deleteAddress(addressId);
+    }
+
+    @RequestMapping(value = "/user/addresses/org", method = RequestMethod.GET)
+    public List<Address> getOrgAddresses()throws RuntimeException{
         return addressService.getOrgAddresses();
+    }
+
+    @RequestMapping(value = "/user/addresses/dest", method = RequestMethod.GET)
+    public List<Address> getDestAddresses()throws RuntimeException{
+        return addressService.getDestAddresses();
     }
 
 }

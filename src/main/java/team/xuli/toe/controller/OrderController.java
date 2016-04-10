@@ -1,10 +1,7 @@
 package team.xuli.toe.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import team.xuli.toe.domain.Order;
 import team.xuli.toe.domain.ParamNewOrder;
 import team.xuli.toe.domain.ParamOrderPage;
@@ -25,9 +22,9 @@ public class OrderController {
         return orderService.addOrder(paramNewOrder);
     }
 
-    @RequestMapping(value = "/order", method = RequestMethod.DELETE)
-    public boolean deleteOrder(@RequestBody Order order) {
-        return orderService.deleteOrder(order);
+    @RequestMapping(value = "/order/{orderId}", method = RequestMethod.DELETE)
+    public Order deleteOrder(@PathVariable int orderId) {
+        return orderService.deleteOrder(orderId);
     }
 
     @RequestMapping(value = "/order/assignment", method = RequestMethod.POST)

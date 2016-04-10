@@ -12,13 +12,17 @@ public class AppConst {
     //ROLE CONST
     public static String ROLE_SYS_ADMIN = "ROLE_SYS_ADMIN";
     public static String ROLE_OWNER = "ROLE_OWNER";
-    public static String ROLE_CARRIER = "ROLE_CARRIER";
+    public static String ROLE_DELIVERER = "ROLE_DELIVERER";
 
     //Order status
-    public static  int ORDER_STATUS_DELETED = -2;//不能为-1
+    public static  int ORDER_STATUS_DELETED = 10;//不能为-1
     public static  int ORDER_STATUS_NEW = 0;
     public static  int ORDER_STATUS_ASSIGNED = 1;
     public static  int ORDER_STATUS_COMPLETED = 2;
+
+    //Address status
+    public static int ADDRESS_STATUS_ENABLED = 1;
+    public static int ADDRESS_STATUS_DISABLED = 0;
 
     //NONE_SENSE CONST
     public static String ROLE_NONE_SENSE = "NO_ROLE";

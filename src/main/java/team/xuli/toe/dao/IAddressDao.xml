@@ -8,14 +8,16 @@
         `calledName`,
         `phoneNo`,
         `addressDesc`,
-        `addressData`)
+        `addressData`,
+        `status`)
         VALUES
         (#{userId},
         #{type},
         #{calledName},
         #{phoneNo},
         #{addressDesc},
-        #{addressData});
+        #{addressData},
+        #{status});
     </insert>
 
     <select id="get" resultType="team.xuli.toe.domain.Address">
@@ -26,7 +28,8 @@
         `calledName`,
         `phoneNo`,
         `addressDesc`,
-        `addressData`
+        `addressData`,
+        `status`
         FROM `address`
         WHERE `addressId` = #{addressId}
     </select>
@@ -39,10 +42,12 @@
         `calledName`,
         `phoneNo`,
         `addressDesc`,
-        `addressData`
+        `addressData`,
+        `status`
         FROM `address`
         WHERE `userId` = #{userId}
-        AND `type` = #{type};
+        AND `type` = #{type}
+        AND `status` = 1;
     </select>
 
     <update id="update" parameterType="team.xuli.toe.domain.Address">
@@ -54,6 +59,7 @@
         <if test="phoneNo != '' and phoneNo != null ">`phoneNo` = #{phoneNo},</if>
         <if test="addressDesc != '' and addressDesc != null ">`addressDesc` = #{addressDesc},</if>
         <if test="addressData != '' and addressData != null ">`addressData` = #{addressData},</if>
+        <if test="status == 0 || status == 1 ">`status` = #{status},</if>
         `addressId` = #{addressId}
         WHERE `addressId` = #{addressId};
     </update>

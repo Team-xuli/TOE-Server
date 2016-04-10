@@ -11,7 +11,7 @@ public class ParamOrderPage {
     private int pageNo;
     private int ordersCount;
     private int countPerPage;
-    private int status;
+    private int status = -1;
     private List<Order> orders;
 
     public int getPageNo() {

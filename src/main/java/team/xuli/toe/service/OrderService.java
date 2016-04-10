@@ -64,7 +64,7 @@ public class OrderService implements IOrderService {
         int carrierId = AppConst.ID_NONE_SENSE;
         if (currentUser.getRole().equals(AppConst.ROLE_OWNER)) {
             ownerId = currentUser.getUserId();
-        }else if (currentUser.getRole().equals(AppConst.ROLE_CARRIER)) {
+        }else if (currentUser.getRole().equals(AppConst.ROLE_DELIVERER)) {
             carrierId = currentUser.getUserId();
         }
         param.setOrdersCount(orderDao.getQualifiedOrdersCount(ownerId,
@@ -95,25 +95,28 @@ public class OrderService implements IOrderService {
 
     public boolean assignOrder(Order order){
         User currentUser = securityService.currentUser();
-        this.isValidToAssign(order);
+        Order tmpOrder = orderDao.get(order.getOrderId());
 
-        Order tmpOrder = new Order();
+        this.isValidToAssign(tmpOrder);
+
         tmpOrder.setOrderId(order.getOrderId());
         tmpOrder.setCarrierId(currentUser.getUserId());
         tmpOrder.setStatus(AppConst.ORDER_STATUS_ASSIGNED);
-        return orderDao.update(order);
+        return orderDao.update(tmpOrder);
     }
 
     @Transactional
     public boolean closeOrder(Order order) {
         User currentUser = securityService.currentUser();
         //update order
-        Order tmpOrder = new Order();
+        Order tmpOrder = orderDao.get(order.getOrderId());
+
         this.isValidToClose(currentUser, tmpOrder);
+
         tmpOrder.setOrderId(order.getOrderId());
         tmpOrder.setEndTime(new Date());
         tmpOrder.setStatus(AppConst.ORDER_STATUS_COMPLETED);
-        orderDao.update(order);
+        orderDao.update(tmpOrder);
 
         //update account money and credit
         securityService.remitFromAdmin(order.getCarrierId(),order.getPayment());
@@ -122,13 +125,16 @@ public class OrderService implements IOrderService {
         return true;
     }
 
-    public boolean deleteOrder(Order order){
+    public Order deleteOrder(int orderId){
         User currentUser = securityService.currentUser();
-        this.isValidToDelete(currentUser, order);
-        Order tmpOrder = new Order();
-        tmpOrder.setOrderId(order.getOrderId());
+        Order tmpOrder = orderDao.get(orderId);
+
+        this.isValidToDelete(currentUser, tmpOrder);
+
+        tmpOrder.setOrderId(orderId);
         tmpOrder.setStatus(AppConst.ORDER_STATUS_DELETED);
-        return orderDao.update(order);
+        orderDao.update(tmpOrder);
+        return tmpOrder;
     }
     public boolean validateOrderModifier(User user, Order order) {
         Order oldOrder = orderDao.get(order.getOrderId());

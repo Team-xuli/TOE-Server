@@ -16,7 +16,7 @@ public interface IOrderService {
     boolean addOrder(ParamNewOrder paramNewOrder);
     boolean assignOrder(Order order);
     boolean closeOrder(Order order);
-    boolean deleteOrder(Order order);
+    Order deleteOrder(int orderId);
     boolean validateOrderModifier(User user, Order order);
     boolean isValidToAssign(Order order);
     boolean isValidToClose(User user,Order order);
