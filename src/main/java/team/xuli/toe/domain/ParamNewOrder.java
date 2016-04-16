@@ -20,7 +20,7 @@ public class ParamNewOrder {
     @NotBlank
     private String description;
 
-    @Min(1)
+    @Min(0)
     private int payment = 0;
 
     private Date deadLine = new Date();
@@ -30,7 +30,6 @@ public class ParamNewOrder {
 
     private int destAddressId;
 
-    @NotNull
     private Address destAddress;
 
 

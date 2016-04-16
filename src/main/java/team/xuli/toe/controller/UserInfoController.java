@@ -3,12 +3,14 @@ package team.xuli.toe.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import team.xuli.toe.domain.Address;
+import team.xuli.toe.domain.ParamModifyPassword;
 import team.xuli.toe.domain.ParamSignUp;
 import team.xuli.toe.domain.User;
 import team.xuli.toe.service.IAddressService;
 import team.xuli.toe.service.ISecurityService;
 import team.xuli.toe.service.IUserService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -26,7 +28,7 @@ public class UserInfoController {
     private ISecurityService securityService;
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public boolean signUp(@RequestBody ParamSignUp paramSignUp) throws RuntimeException {
+    public boolean signUp(@Valid @RequestBody ParamSignUp paramSignUp) throws RuntimeException {
         return userService.signUpWithRole(paramSignUp);
     }
 
@@ -35,13 +37,17 @@ public class UserInfoController {
         return securityService.currentUser();
     }
 
-    @RequestMapping(value = "/user/info", method = RequestMethod.PUT)
+    @RequestMapping(value = "/user", method = RequestMethod.PUT)
     public boolean modifyUser(@RequestBody User user) throws RuntimeException {
         return  userService.updateUser(user);
     }
+    @RequestMapping(value = "/user/password", method = RequestMethod.PUT)
+    public boolean modifyPassword(@Valid @RequestBody ParamModifyPassword param) throws RuntimeException {
+        return  userService.modifyPassword(param);
+    }
 
     @RequestMapping(value = "/user/address", method = RequestMethod.POST)
-    public boolean addAddress(@RequestBody Address address)throws RuntimeException {
+    public boolean addAddress(@Valid @RequestBody Address address)throws RuntimeException {
         return addressService.addOrgAddress(address);
     }
 

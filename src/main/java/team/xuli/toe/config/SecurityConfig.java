@@ -30,19 +30,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.httpBasic();
-        http
-                .formLogin()
-                    .loginPage("/signin")
-                    .defaultSuccessUrl("/user")
-                    .permitAll()
-                .and()
-                .logout()
-                    .logoutUrl("/signout")
-                    .clearAuthentication(true)
-                    .permitAll();
-        http
-                .authorizeRequests()
-                .anyRequest().permitAll();
+        http.authorizeRequests().anyRequest().permitAll();
+//        http
+//                .formLogin()
+//                    .loginPage("/signin")
+//                    .defaultSuccessUrl("/user")
+//                    .permitAll()
+//                .and()
+//                .logout()
+//                    .logoutUrl("/signout")
+//                    .clearAuthentication(true)
+//                    .permitAll();
+//        http
+//                .authorizeRequests()
 //                //TestController
 //                //不登录也可以访问hello world
 //                .antMatchers("/hello").permitAll()

@@ -1,5 +1,6 @@
 package team.xuli.toe.domain;
 
+import javax.validation.constraints.Min;
 import java.util.List;
 
 /**
@@ -8,6 +9,7 @@ import java.util.List;
  * 创建原因：
  */
 public class ParamOrderPage {
+    @Min(1)
     private int pageNo;
     private int ordersCount;
     private int countPerPage;

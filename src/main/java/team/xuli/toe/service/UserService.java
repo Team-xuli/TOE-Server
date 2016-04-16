@@ -6,10 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import team.xuli.toe.dao.IRoleDao;
 import team.xuli.toe.dao.IUserDao;
-import team.xuli.toe.domain.ParamSignUp;
-import team.xuli.toe.domain.RelationBtwUserAndRole;
-import team.xuli.toe.domain.Role;
-import team.xuli.toe.domain.User;
+import team.xuli.toe.domain.*;
 import team.xuli.toe.util.AppConst;
 import team.xuli.toe.util.Messages;
 
@@ -57,8 +54,23 @@ public class UserService implements IUserService {
 
     public boolean updateUser(User user){
         User currentUser = securityService.currentUser();
+        User tmpUser = new User();
+        tmpUser.setUserId(currentUser.getUserId());
+
+        //changeable fields
+        tmpUser.setUsername(user.getUsername());
+
+        //validate and update
         this.validateUserModifier(currentUser, user);
-        return userDao.update(user);
+        return userDao.update(tmpUser);
+    }
+
+    public boolean modifyPassword(ParamModifyPassword param){
+        User currentUser = securityService.currentUser();
+        User tmpUser = new User();
+        tmpUser.setPassword(param.getNewPassword());
+        this.validateOldPassword(currentUser,param.getOldPassword());
+        return userDao.update(tmpUser);
     }
 
     private User newUser(String username, String password) {
@@ -82,5 +94,12 @@ public class UserService implements IUserService {
             throw new RuntimeException(Messages.DANGEROUS_REQUEST);
         }
         return true;
+    }
+
+    public boolean validateOldPassword(User currentUser,String oldPassword){
+        if(currentUser.getPassword().equals(oldPassword)){
+            return true;
+        }
+        throw new RuntimeException(Messages.WRONG_PASS);
     }
 }

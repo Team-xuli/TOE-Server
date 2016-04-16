@@ -7,6 +7,8 @@ import team.xuli.toe.domain.ParamNewOrder;
 import team.xuli.toe.domain.ParamOrderPage;
 import team.xuli.toe.service.IOrderService;
 
+import javax.validation.Valid;
+
 /**
  * @author: 徐清锋
  * 创建时间：2016/3/20
@@ -18,7 +20,7 @@ public class OrderController {
     private IOrderService orderService;
 
     @RequestMapping(value = "/order", method = RequestMethod.POST)
-    public boolean addOrder(@RequestBody ParamNewOrder paramNewOrder){
+    public boolean addOrder(@Valid @RequestBody ParamNewOrder paramNewOrder){
         return orderService.addOrder(paramNewOrder);
     }
 
@@ -38,12 +40,12 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/order/nearby", method = RequestMethod.POST)
-    public ParamOrderPage getOrdersNearby(@RequestBody ParamOrderPage param){
+    public ParamOrderPage getOrdersNearby(@Valid @RequestBody ParamOrderPage param){
         return orderService.getNewOrdersNearby(param);
     }
 
     @RequestMapping(value = "/order/history", method = RequestMethod.POST)
-    public ParamOrderPage getHistoryOrders(@RequestBody ParamOrderPage param){
+    public ParamOrderPage getHistoryOrders(@Valid @RequestBody ParamOrderPage param){
         return orderService.getHistoryOrders( param);
     }
 }

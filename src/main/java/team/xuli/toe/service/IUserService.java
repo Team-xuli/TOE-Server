@@ -1,6 +1,7 @@
 package team.xuli.toe.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
+import team.xuli.toe.domain.ParamModifyPassword;
 import team.xuli.toe.domain.ParamSignUp;
 import team.xuli.toe.domain.User;
 
@@ -16,6 +17,10 @@ public interface IUserService extends UserDetailsService {
 
     boolean validateUserModifier(User currentUser,User userInfo);
 
+    boolean validateOldPassword(User currentUser,String oldPassword);
+
     boolean updateUser(User user);
+
+    boolean modifyPassword(ParamModifyPassword param);
 
 }

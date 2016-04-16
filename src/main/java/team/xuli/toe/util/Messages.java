@@ -10,6 +10,7 @@ public class Messages {
     public static String INFO_REQUIRED = "缺少必要信息！";
     public static String USERNAME_ALREADY_EXISTS = "用户名已存在！";
     public static String DANGEROUS_REQUEST = "危险性请求！";
+    public static String WRONG_PASS = "密码错误！";
     public static String INSUFFICIENT_FUNDS  = "付款方余额不足，请稍后再试！";
     //order status message
     public static String DELETE_ORDER_FAILED_FOR_STATUS = "已接单，不可删除！";

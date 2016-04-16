@@ -1,5 +1,7 @@
 package team.xuli.toe.domain;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.validation.constraints.NotNull;
 
 /**
@@ -12,10 +14,13 @@ public class Address {
     private int userId;
     private int type;
     @NotNull
+    @NotBlank
     private String calledName;
     @NotNull
+    @NotBlank
     private String phoneNo;
     @NotNull
+    @NotBlank
     private String addressDesc;
     private String addressData = "";
     private int status;

@@ -43,7 +43,7 @@ public class SecurityService implements ISecurityService {
         userDao.update(payer);
         return true;
     }
-
+    @Transactional
     public boolean creditIncrease(int userId, int value){
         User user = userDao.getById(userId);
         user.setCredit(user.getCredit() + value);

@@ -1,5 +1,7 @@
 package team.xuli.toe.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.sun.istack.internal.NotNull;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import team.xuli.toe.util.AppConst;
@@ -13,7 +15,10 @@ import java.util.ArrayList;
  */
 public class User implements UserDetails {
     private int userId = 0;
+    @NotNull
     private String username;
+    @NotNull
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String password;
     private int credit;
     private int money;

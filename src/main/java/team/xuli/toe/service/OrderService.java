@@ -39,7 +39,7 @@ public class OrderService implements IOrderService {
         order.setOwnerId(currentUser.getUserId());
         order.setStatus(AppConst.ORDER_STATUS_NEW);
         order.setCreateTime(new Date());
-        order.setDeadLine(paramNewOrder.getDeadLine());
+        order.setDeadLine(new Date());
         order.setPayment(paramNewOrder.getPayment());
         order.setDescription(paramNewOrder.getDescription());
         order.setOrgAddressId(paramNewOrder.getOrgAddressId());
