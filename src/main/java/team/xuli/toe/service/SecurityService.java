@@ -53,8 +53,8 @@ public class SecurityService implements ISecurityService {
     public User currentUser(){
         User currentUser;
         try {
-            currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+            Object tmp = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            currentUser = (User) tmp;
         }catch(Exception e) {
             throw new RuntimeException(Messages.NO_USER_LOGIN);
         }
