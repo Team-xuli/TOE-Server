@@ -22,7 +22,9 @@ public class Address {
     @NotNull
     @NotBlank
     private String addressDesc;
-    private String addressData = "";
+
+    private double longitude;
+    private double latitude;
     private int status;
 
     public int getAddressId() {
@@ -73,12 +75,20 @@ public class Address {
         this.addressDesc = addressDesc;
     }
 
-    public String getAddressData() {
-        return addressData;
+    public double getLongitude() {
+        return longitude;
     }
 
-    public void setAddressData(String addressData) {
-        this.addressData = addressData;
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 
     public int getStatus() {

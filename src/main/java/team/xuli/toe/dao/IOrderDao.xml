@@ -8,14 +8,16 @@
             <result property="calledName" column="orgCalledName"/>
             <result property="phoneNo" column="orgPhoneNo"/>
             <result property="addressDesc" column="orgAddressDesc"/>
-            <result property="addressData" column="orgAddressData"/>
+            <result property="longitude" column="longitude"/>
+            <result property="latitude" column="latitude"/>
        </association>
         <association property="destAddress" javaType="team.xuli.toe.domain.Address">
             <id property="addressId" column="destAddressId"/>
             <result property="calledName" column="destCalledName"/>
             <result property="phoneNo" column="destPhoneNo"/>
             <result property="addressDesc" column="destAddressDesc"/>
-            <result property="addressData" column="destAddressData"/>
+            <result property="longitude" column="longitude"/>
+            <result property="latitude" column="latitude"/>
         </association>
     </resultMap>
     <insert id="insert" parameterType="team.xuli.toe.domain.Order" useGeneratedKeys="true" keyProperty="orderId">
@@ -97,12 +99,14 @@
         org.`calledName` AS orgCalledName,
         org.`phoneNo` AS orgPhoneNo,
         org.`addressDesc` AS orgAddressDesc,
-        org.`addressData` AS orgAddressData,
+        org.`longitude` AS longitude,
+        org.`latitude` AS latitude,
         dest.`addressid` AS destAddressId,
         dest.`calledName` AS destCalledName,
         dest.`phoneNo` AS destPhoneNo,
         dest.`addressDesc` AS destAddressDesc,
-        dest.`addressData` AS destAddressData
+        dest.`longitude` AS longitude,
+        dest.`latitude` AS latitude
         FROM `order`
         LEFT JOIN `address` AS org ON `order`.`orgAddressId` = org.`addressId`
         LEFT JOIN `address` AS dest ON `order`.`destAddressId` = dest.`addressId`

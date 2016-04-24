@@ -63,7 +63,8 @@ public class AddressService implements IAddressService {
         tmpAddress.setCalledName(address.getCalledName());
         tmpAddress.setPhoneNo(address.getPhoneNo());
         tmpAddress.setAddressDesc(address.getAddressDesc());
-        tmpAddress.setAddressData(address.getAddressData());
+        tmpAddress.setLongitude(address.getLongitude());
+        tmpAddress.setLatitude(address.getLatitude());
         return addressDao.update(address);
     }
 

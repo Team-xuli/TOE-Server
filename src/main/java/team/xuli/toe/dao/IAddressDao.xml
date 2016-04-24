@@ -8,7 +8,8 @@
         `calledName`,
         `phoneNo`,
         `addressDesc`,
-        `addressData`,
+        `longitude`,
+        `latitude`,
         `status`)
         VALUES
         (#{userId},
@@ -16,7 +17,8 @@
         #{calledName},
         #{phoneNo},
         #{addressDesc},
-        #{addressData},
+        #{longitude},
+        #{latitude},
         #{status});
     </insert>
 
@@ -28,7 +30,8 @@
         `calledName`,
         `phoneNo`,
         `addressDesc`,
-        `addressData`,
+        `longitude`,
+        `latitude`,
         `status`
         FROM `address`
         WHERE `addressId` = #{addressId}
@@ -42,7 +45,8 @@
         `calledName`,
         `phoneNo`,
         `addressDesc`,
-        `addressData`,
+        `longitude`,
+        `latitude`,
         `status`
         FROM `address`
         WHERE `userId` = #{userId}
@@ -57,8 +61,11 @@
         <if test="type >= 0">`type` = #{type},</if>
         <if test="calledName != '' and calledName != null ">`calledName` = #{calledName},</if>
         <if test="phoneNo != '' and phoneNo != null ">`phoneNo` = #{phoneNo},</if>
-        <if test="addressDesc != '' and addressDesc != null ">`addressDesc` = #{addressDesc},</if>
-        <if test="addressData != '' and addressData != null ">`addressData` = #{addressData},</if>
+        <if test="addressDesc != '' and addressDesc != null ">
+            `addressDesc` = #{addressDesc},
+            `longitude` = #{longitude},
+            `latitude` = #{latitude},
+        </if>
         <if test="status == 0 || status == 1 ">`status` = #{status},</if>
         `addressId` = #{addressId}
         WHERE `addressId` = #{addressId};
