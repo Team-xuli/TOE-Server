@@ -10,11 +10,13 @@
         </collection>
     </resultMap>
     <!--通过用户登录名获取用User-->
-        <select id="getByUsername" resultMap="UserMap">
+    <select id="getByUsername" resultMap="UserMap">
         SELECT
         user.userId,
         user.username,
         user.password,
+        user.credit,
+        user.money,
         user.accountNonExpired,
         user.accountNonLocked,
         user.credentialsNonExpired,
@@ -30,7 +32,8 @@
         SELECT
         user.userId,
         user.username,
-        user.password,
+        user.credit,
+        user.money,
         user.accountNonExpired,
         user.accountNonLocked,
         user.credentialsNonExpired,

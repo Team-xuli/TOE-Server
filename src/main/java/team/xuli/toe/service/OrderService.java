@@ -102,6 +102,7 @@ public class OrderService implements IOrderService {
         tmpOrder.setOrderId(order.getOrderId());
         tmpOrder.setCarrierId(currentUser.getUserId());
         tmpOrder.setStatus(AppConst.ORDER_STATUS_ASSIGNED);
+        tmpOrder.setAssignTime(new Date());
         return orderDao.update(tmpOrder);
     }
 

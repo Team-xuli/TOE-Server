@@ -18,7 +18,7 @@ public class User implements UserDetails {
     @NotNull
     private String username;
     @NotNull
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     private String password;
     private int credit;
     private int money;

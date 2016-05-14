@@ -55,6 +55,7 @@ public class SecurityService implements ISecurityService {
         try {
             Object tmp = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             currentUser = (User) tmp;
+            currentUser.setPassword("none");
         }catch(Exception e) {
             throw new RuntimeException(Messages.NO_USER_LOGIN);
         }
