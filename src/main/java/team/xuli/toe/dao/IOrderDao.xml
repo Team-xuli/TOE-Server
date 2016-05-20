@@ -8,16 +8,16 @@
             <result property="calledName" column="orgCalledName"/>
             <result property="phoneNo" column="orgPhoneNo"/>
             <result property="addressDesc" column="orgAddressDesc"/>
-            <result property="longitude" column="longitude"/>
-            <result property="latitude" column="latitude"/>
+            <result property="longitude" column="orgLongitude"/>
+            <result property="latitude" column="orgLatitude"/>
        </association>
         <association property="destAddress" javaType="team.xuli.toe.domain.Address">
             <id property="addressId" column="destAddressId"/>
             <result property="calledName" column="destCalledName"/>
             <result property="phoneNo" column="destPhoneNo"/>
             <result property="addressDesc" column="destAddressDesc"/>
-            <result property="longitude" column="longitude"/>
-            <result property="latitude" column="latitude"/>
+            <result property="longitude" column="destLongitude"/>
+            <result property="latitude" column="destLatitude"/>
         </association>
     </resultMap>
     <insert id="insert" parameterType="team.xuli.toe.domain.Order" useGeneratedKeys="true" keyProperty="orderId">
@@ -99,14 +99,14 @@
         org.`calledName` AS orgCalledName,
         org.`phoneNo` AS orgPhoneNo,
         org.`addressDesc` AS orgAddressDesc,
-        org.`longitude` AS longitude,
-        org.`latitude` AS latitude,
+        org.`longitude` AS orgLongitude,
+        org.`latitude` AS orgLatitude,
         dest.`addressid` AS destAddressId,
         dest.`calledName` AS destCalledName,
         dest.`phoneNo` AS destPhoneNo,
         dest.`addressDesc` AS destAddressDesc,
-        dest.`longitude` AS longitude,
-        dest.`latitude` AS latitude
+        dest.`longitude` AS destLongitude,
+        dest.`latitude` AS destLatitude
         FROM `order`
         LEFT JOIN `address` AS org ON `order`.`orgAddressId` = org.`addressId`
         LEFT JOIN `address` AS dest ON `order`.`destAddressId` = dest.`addressId`
