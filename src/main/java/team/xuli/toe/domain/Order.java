@@ -19,6 +19,10 @@ public class Order {
     private Address destAddress;
 
     private String description;
+    private int itemTypeId;
+    private int weight;
+    private int distance;
+
     private int payment;
     private int status;
     private Date createTime = null;
@@ -136,6 +140,30 @@ public class Order {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
+    }
+
+    public int getItemTypeId() {
+        return itemTypeId;
+    }
+
+    public void setItemTypeId(int itemTypeId) {
+        this.itemTypeId = itemTypeId;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
     }
 }
 

@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/toe?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
+    url: jdbc:mysql://localhost:3306/dcds?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true
     username: root
     password: Xqf123123
 
@@ -8,7 +8,7 @@ server:
   port: 7777
 
 flyway:
-  enabled: false
+  enabled: true
 
 security:
   ignore: '/**'
