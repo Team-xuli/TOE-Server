@@ -13,12 +13,19 @@ import java.util.Date;
  */
 public class ParamNewOrder {
 
-    @Min(1)
+    @Min(0)
     private int orgAddressId;
 
     @NotNull
     @NotBlank
     private String description;
+
+    @Min(1)
+    private int itemTypeId;
+    @Min(0)
+    private Double weight;
+    @Min(0)
+    private Double distance;
 
     @Min(0)
     private int payment = 0;
@@ -87,5 +94,29 @@ public class ParamNewOrder {
 
     public void setDestAddressId(int destAddressId) {
         this.destAddressId = destAddressId;
+    }
+
+    public int getItemTypeId() {
+        return itemTypeId;
+    }
+
+    public void setItemTypeId(int itemTypeId) {
+        this.itemTypeId = itemTypeId;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
+
+    public Double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Double distance) {
+        this.distance = distance;
     }
 }

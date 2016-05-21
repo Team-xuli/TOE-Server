@@ -20,8 +20,10 @@ public class Order {
 
     private String description;
     private int itemTypeId;
-    private int weight;
-    private int distance;
+    private ItemType itemType;
+
+    private Double weight;
+    private Double distance;
 
     private int payment;
     private int status;
@@ -150,20 +152,28 @@ public class Order {
         this.itemTypeId = itemTypeId;
     }
 
-    public int getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 
-    public int getDistance() {
+    public Double getDistance() {
         return distance;
     }
 
-    public void setDistance(int distance) {
+    public void setDistance(Double distance) {
         this.distance = distance;
+    }
+
+    public ItemType getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(ItemType itemType) {
+        this.itemType = itemType;
     }
 }
 

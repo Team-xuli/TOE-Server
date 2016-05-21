@@ -19,7 +19,7 @@ public class ItemTypeController {
     @Autowired
     IItemTypeDao itemTypeDao;
 
-    @RequestMapping(value = "/ItemTypes", method = RequestMethod.GET)
+    @RequestMapping(value = "/itemTypes", method = RequestMethod.GET)
     List<ItemType> getItemTypes(){
         return itemTypeDao.getItemTypes();
     }

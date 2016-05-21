@@ -43,6 +43,9 @@ public class OrderService implements IOrderService {
         order.setPayment(paramNewOrder.getPayment());
         order.setDescription(paramNewOrder.getDescription());
         order.setOrgAddressId(paramNewOrder.getOrgAddressId());
+        order.setItemTypeId(paramNewOrder.getItemTypeId());
+        order.setWeight(paramNewOrder.getWeight());
+        order.setDistance(paramNewOrder.getDistance());
 
         //转账给Admin
         securityService.remitToAdmin(currentUser.getUserId(), order.getPayment());

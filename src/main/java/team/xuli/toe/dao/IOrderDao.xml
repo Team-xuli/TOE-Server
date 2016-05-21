@@ -19,6 +19,12 @@
             <result property="longitude" column="destLongitude"/>
             <result property="latitude" column="destLatitude"/>
         </association>
+        <association property="itemType" javaType="team.xuli.toe.domain.ItemType">
+            <id property="itemTypeId" column="itemTypeId"/>
+            <result property="name" column="typeName"/>
+            <result property="description" column="typeDescription"/>
+            <result property="status" column="typeStatus"/>
+        </association>
     </resultMap>
     <insert id="insert" parameterType="team.xuli.toe.domain.Order" useGeneratedKeys="true" keyProperty="orderId">
         INSERT INTO `order`
@@ -110,21 +116,23 @@
         `order`.`deadLine`,
         `order`.`assignTime`,
         `order`.`endTime`,
-        org.`addressid` AS orgAddressId,
         org.`calledName` AS orgCalledName,
         org.`phoneNo` AS orgPhoneNo,
         org.`addressDesc` AS orgAddressDesc,
         org.`longitude` AS orgLongitude,
         org.`latitude` AS orgLatitude,
-        dest.`addressid` AS destAddressId,
         dest.`calledName` AS destCalledName,
         dest.`phoneNo` AS destPhoneNo,
         dest.`addressDesc` AS destAddressDesc,
         dest.`longitude` AS destLongitude,
-        dest.`latitude` AS destLatitude
+        dest.`latitude` AS destLatitude,
+        type.`name` AS typeName,
+        type.`description` AS typeDescription,
+        type.`status` AS typeStatus
         FROM `order`
         LEFT JOIN `address` AS org ON `order`.`orgAddressId` = org.`addressId`
         LEFT JOIN `address` AS dest ON `order`.`destAddressId` = dest.`addressId`
+        LEFT JOIN `item_type_dict` AS type ON `order`.`itemTypeId` = type.`itemTypeId`
         WHERE
         <if test="ownerId > 0">`ownerId` = #{ownerId} AND</if>
         <if test="carrierId > 0">`carrierId` = #{carrierId} AND</if>
