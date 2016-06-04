@@ -10,6 +10,7 @@ import team.xuli.toe.util.AppConst;
 import team.xuli.toe.util.ProfileConst;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -50,9 +51,29 @@ public class UserProfileService implements IUserProfileService {
         return updateUserInterest(user, interestName, chosenFeatureName);
     }
 
+    public int sortNearByOrder(User user, List<Order> orders) {
+        List<UserInterest> interests = userProfileDao.getUserInterests(user.getUserId());
+        for (Order order : orders){
+            order.setInterestScore(0.0);
+            for (UserInterest interest : interests){
+                if(interest.getName().equals(ProfileConst.ITEM_TYPE_INTEREST)){
+                    for (InterestFeature feature : interest.getFeatures()){
+                        if(order.getItemType().getName().equals(feature.getName())){
+                            order.setInterestScore(order.getInterestScore() + feature.getWeight());
+                        }
+                    }
+                } else {
+                    //TODO: only itemType now, add other interests here
+                }
+            }
+        }
+        Collections.sort(orders);
+        return 0;
+    }
+
     @Transactional
     public int updateUserInterest(User user, String interestName, String chosenFeatureName) {
-        UserInterest interest = userProfileDao.getUserInterest(user.getUserId(),interestName);
+        UserInterest interest = userProfileDao.getUserInterest(user.getUserId(), interestName);
         InterestFeature chosenFeature = this.getChosenFeature(interest,chosenFeatureName);
         InterestFeature expectFeature = this.getExpectFeature(interest,chosenFeature);
 
@@ -77,9 +98,7 @@ public class UserProfileService implements IUserProfileService {
 
         //update DB
         userProfileDao.updateInterest(interest);
-        for(InterestFeature feature : interest.getFeatures()){
-            userProfileDao.updateFeature(feature);
-        }
+        interest.getFeatures().forEach(userProfileDao::updateFeature);
         return 0;
     }
 

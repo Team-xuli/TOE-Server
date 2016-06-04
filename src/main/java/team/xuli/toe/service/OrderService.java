@@ -107,6 +107,7 @@ public class OrderService implements IOrderService {
                 i++;
             }
         }
+        userProfileService.sortNearByOrder(securityService.currentUser(),param.getOrders());
         return param;
     }
 

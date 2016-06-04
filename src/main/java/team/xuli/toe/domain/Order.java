@@ -7,7 +7,7 @@ import java.util.Date;
  * 创建时间：2016/3/19
  * 创建原因：
  */
-public class Order {
+public class Order implements Comparable<Order> {
     private int orderId;
     private int ownerId;
     private int carrierId;
@@ -31,6 +31,8 @@ public class Order {
     private Date deadLine = null;
     private Date assignTime = null;
     private Date endTime = null;
+
+    private Double interestScore = 0.0;
 
     public Address getOrgAddress() {
         return orgAddress;
@@ -174,6 +176,22 @@ public class Order {
 
     public void setItemType(ItemType itemType) {
         this.itemType = itemType;
+    }
+
+    public Double getInterestScore() {
+        return interestScore;
+    }
+
+    public void setInterestScore(Double interestScore) {
+        this.interestScore = interestScore;
+    }
+
+    @Override
+    public int compareTo(Order order) {
+        if(order == null){
+            return 0;
+        }
+        return order.getInterestScore().compareTo(this.getInterestScore());
     }
 }
 
