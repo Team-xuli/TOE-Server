@@ -13,6 +13,7 @@ public class ParamOrderPage {
     private int pageNo;
     private int ordersCount;
     private int countPerPage;
+    private GeoPoint centerPoint;
     private int status = -1;
     private List<Order> orders;
 
@@ -54,5 +55,13 @@ public class ParamOrderPage {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    public GeoPoint getCenterPoint() {
+        return centerPoint;
+    }
+
+    public void setCenterPoint(GeoPoint centerPoint) {
+        this.centerPoint = centerPoint;
     }
 }

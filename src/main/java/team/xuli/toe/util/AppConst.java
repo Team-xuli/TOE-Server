@@ -43,4 +43,7 @@ public class AppConst {
     //Credit increment
     public static int CREDIT_INCREMENT_FOR_DELIVERER = 1;
     public static int CREDIT_INCREMENT_FOR_OWNER = 1;
+
+    //nearby distance
+    public static double GEO_POINT_NEARBY_LIMIT = 5000.0;
 }

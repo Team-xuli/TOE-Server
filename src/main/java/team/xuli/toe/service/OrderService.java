@@ -12,6 +12,7 @@ import team.xuli.toe.util.AppConst;
 import team.xuli.toe.util.Messages;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author: 徐清锋
@@ -86,13 +87,24 @@ public class OrderService implements IOrderService {
         int carrierId = AppConst.ID_NONE_SENSE;
         //状态设为新订单
         param.setOrdersCount(orderDao.getQualifiedOrdersCount(ownerId,
-                carrierId,
-                AppConst.ORDER_STATUS_NEW));
+                                                              carrierId,
+                                                              AppConst.ORDER_STATUS_NEW));
         param.setOrders(orderDao.getQualifiedOrders((param.getPageNo() - 1) * param.getCountPerPage(),
-                param.getCountPerPage(),
-                ownerId,
-                carrierId,
-                AppConst.ORDER_STATUS_NEW));
+                                                    param.getCountPerPage(),
+                                                    ownerId,
+                                                    carrierId,
+                                                    AppConst.ORDER_STATUS_NEW));
+        //filter order by user position
+        List<Order> orders = param.getOrders();
+        for(int i = 0; i < orders.size(); ){
+            Order tmpOrder = orders.get(i);
+            if(!param.getCenterPoint().isNearby(tmpOrder.getOrgAddress().getLongitude(),
+                                                tmpOrder.getOrgAddress().getLatitude())){
+                orders.remove(i);
+            }else{
+                i++;
+            }
+        }
         return param;
     }
 
