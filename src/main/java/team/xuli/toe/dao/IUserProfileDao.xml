@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.xuli.toe.dao.IUserProfileDao">
+    <resultMap id="InterestMap" type="team.xuli.toe.domain.UserInterest" autoMapping="true">
+        <id column="interestMainId" property="interestMainId"/>
+        <collection property="features" ofType="team.xuli.toe.domain.InterestFeature">
+            <id property="interestFeatureId"  column="interestFeatureId"/>
+            <result property="interestMainId"  column="interestMainId"/>
+            <result property="name"  column="featureName"/>
+            <result property="weight"  column="weight"/>
+        </collection>
+    </resultMap>
+
+    <select id="getUserInterests" resultMap="InterestMap">
+        SELECT
+        interest.interestMainId,
+        interest.userId,
+        interest.name,
+        interest.changeRate,
+        feature.interestFeatureId,
+        feature.name AS featureName,
+        feature.weight
+        FROM user_interest_main AS interest
+        LEFT JOIN user_interest_feature AS feature  ON interest.interestMainId = feature.interestMainId
+        WHERE interest.userId=#{userId};
+    </select>
+
+    <select id="getUserInterest" resultMap="InterestMap">
+        SELECT
+        interest.interestMainId,
+        interest.userId,
+        interest.name,
+        interest.changeRate,
+        feature.interestFeatureId,
+        feature.name AS featureName,
+        feature.weight
+        FROM user_interest_main AS interest
+        LEFT JOIN user_interest_feature AS feature  ON interest.interestMainId = feature.interestMainId
+        WHERE interest.userId=#{userId}
+        AND interest.name = #{interestName};
+    </select>
+
+    <insert id="insertInterest" parameterType="team.xuli.toe.domain.UserInterest" useGeneratedKeys="true" keyProperty="interestMainId">
+        INSERT INTO user_interest_main
+        (name,
+        userId,
+        changeRate)
+        VALUES
+        (#{name},
+        #{userId},
+        #{changeRate});
+    </insert>
+
+    <insert id="insertFeature" parameterType="team.xuli.toe.domain.InterestFeature" useGeneratedKeys="true" keyProperty="interestFeatureId">
+        INSERT INTO user_interest_feature
+        (name,
+        interestMainId,
+        weight)
+        VALUES
+        (#{name},
+        #{interestMainId},
+        #{weight});
+    </insert>
+
+    <update id="updateInterest" parameterType="team.xuli.toe.domain.UserInterest">
+        UPDATE user_interest_main
+        SET
+        changeRate = #{changeRate}
+        WHERE interestMainId = #{interestMainId};
+    </update>
+
+    <update id="updateFeature" parameterType="team.xuli.toe.domain.InterestFeature">
+        UPDATE user_interest_feature
+        SET
+        weight = #{weight}
+        WHERE interestFeatureId = #{interestFeatureId};
+    </update>
+
+</mapper>
+

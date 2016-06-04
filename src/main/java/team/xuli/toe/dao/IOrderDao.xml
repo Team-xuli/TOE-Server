@@ -78,8 +78,8 @@
         WHERE `orderId` = #{orderId};
     </update>
 
-    <select id="get" resultType="team.xuli.toe.domain.Order">
-        SELECT
+    <select id="get" resultMap="OrderMap">
+       SELECT
         `order`.`orderId`,
         `order`.`ownerId`,
         `order`.`carrierId`,
@@ -94,8 +94,24 @@
         `order`.`createTime`,
         `order`.`deadLine`,
         `order`.`assignTime`,
-        `order`.`endTime`
+        `order`.`endTime`,
+        org.`calledName` AS orgCalledName,
+        org.`phoneNo` AS orgPhoneNo,
+        org.`addressDesc` AS orgAddressDesc,
+        org.`longitude` AS orgLongitude,
+        org.`latitude` AS orgLatitude,
+        dest.`calledName` AS destCalledName,
+        dest.`phoneNo` AS destPhoneNo,
+        dest.`addressDesc` AS destAddressDesc,
+        dest.`longitude` AS destLongitude,
+        dest.`latitude` AS destLatitude,
+        type.`name` AS typeName,
+        type.`description` AS typeDescription,
+        type.`status` AS typeStatus
         FROM `order`
+        LEFT JOIN `address` AS org ON `order`.`orgAddressId` = org.`addressId`
+        LEFT JOIN `address` AS dest ON `order`.`destAddressId` = dest.`addressId`
+        LEFT JOIN `item_type_dict` AS type ON `order`.`itemTypeId` = type.`itemTypeId`
         WHERE orderId = #{orderId};
     </select>
 

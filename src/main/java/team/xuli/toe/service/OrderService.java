@@ -27,6 +27,8 @@ public class OrderService implements IOrderService {
     private IAddressService addressService;
     @Autowired
     private ISecurityService securityService;
+    @Autowired
+    private IUserProfileService userProfileService;
 
     @Transactional
     public boolean addOrder(ParamNewOrder paramNewOrder){
@@ -108,6 +110,7 @@ public class OrderService implements IOrderService {
         return param;
     }
 
+    @Transactional
     public boolean assignOrder(Order order){
         User currentUser = securityService.currentUser();
         Order tmpOrder = orderDao.get(order.getOrderId());
@@ -118,7 +121,9 @@ public class OrderService implements IOrderService {
         tmpOrder.setCarrierId(currentUser.getUserId());
         tmpOrder.setStatus(AppConst.ORDER_STATUS_ASSIGNED);
         tmpOrder.setAssignTime(new Date());
-        return orderDao.update(tmpOrder);
+        orderDao.update(tmpOrder);
+        userProfileService.updateUserProfile(currentUser,tmpOrder);
+        return true;
     }
 
     @Transactional

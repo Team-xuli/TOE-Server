@@ -22,6 +22,8 @@ public class UserService implements IUserService {
     @Autowired
     private IRoleDao roleDao;
     @Autowired
+    private IUserProfileService userProfileService;
+    @Autowired
     private  ISecurityService securityService;
 
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -38,7 +40,9 @@ public class UserService implements IUserService {
         if(role != null &&  userDao.insert(user)) {
             RelationBtwUserAndRole relationBtwUserAndRole =
                     newRelationBtwUserAndRole(user.getUserId(), role.getRoleId());
-            return roleDao.insertRelationShip(relationBtwUserAndRole);
+            roleDao.insertRelationShip(relationBtwUserAndRole);
+            userProfileService.createUserProfile(user,paramSignUp.getRole());
+            return true;
         }else{
             return false;
         }
